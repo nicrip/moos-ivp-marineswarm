@@ -1,0 +1,19 @@
+// -----------------------------------------------
+//       ABSTRACT BEHAVIOR CONFIGURATION FILE     
+// -----------------------------------------------
+
+Behavior = ??
+{
+  /// BHV_ManageAcousticPing parameters:
+    ping_filter_timeout = 40   	                        // s double
+    contact_timeout = 40				// s double
+    display_filtered_contact = false           		// true|false bool
+    display_unfiltered_contact = false  		// true|false bool
+    sound_speed = 1500					// m/s double -> use UPDATES parameter to update sound speed if necessary
+    
+  // BHV_AcousticPingPlanner parameters:
+    node_offsets = name=alpha,     x=0,    y=0     	// string, m, m
+    node_offsets = name=bravo,     x=0,    y=300     	// string, m, m
+    node_offsets = name=charlie,   x=150,  y=259.81	// etc. ...
+    // ... (above is isoceles tri w side length 300)
+}

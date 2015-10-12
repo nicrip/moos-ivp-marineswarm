@@ -1,0 +1,53 @@
+ProcessConfig = pMarinePID
+{
+  AppTick    = 10
+  CommsTick  = 10
+  
+  SPEED_FACTOR = 0        // if 0, we use SpeedPID      
+  sim_instability = 0     // Range [0,inf)    
+  
+  tardy_helm_threshold = 1000.0 // old = 2.0 ; we increased it for testing                             
+  tardy_nav_threshold  = 1000.0 // old = 2.0 ; we increased it for testing    
+  
+  VERBOSE       = true
+  DEPTH_CONTROL = true
+  ACTIVE_START  = true
+  
+  // Yaw PID controller
+  YAW_PID_KP                = 0.5
+  YAW_PID_KD                = 0.1
+  YAW_PID_KI                = 0.012
+  YAW_PID_INTEGRAL_LIMIT    = 0.2
+  
+  //yaw_pid_ki  = 0.012                                           
+  //yaw_pid_integral_limit = 0.07                                 
+  //yaw_pid_ki_limit       = 0.2 
+  
+  // Speed PID controller
+  SPEED_PID_KP              = 0.8
+  SPEED_PID_KD              = 0.1
+  SPEED_PID_KI              = 0.11
+  SPEED_PID_INTEGRAL_LIMIT  = 0.07
+  
+  #ifdef VTYPE UUV
+    //Pitch PID controller
+    PITCH_PID_KP                   = 0.5
+    PITCH_PID_KD                   = 1.0
+    PITCH_PID_KI                   = 0
+    PITCH_PID_INTEGRAL_LIMIT       = 0
+
+    //ZPID controller
+    Z_TO_PITCH_PID_KP              = 0.12
+    Z_TO_PITCH_PID_KD              = 1.0
+    Z_TO_PITCH_PID_KI              = 0.004
+    Z_TO_PITCH_PID_INTEGRAL_LIMIT  = 0.05
+
+    MAXPITCH     = 15
+    MAXELEVATOR  = 13
+  #endif
+
+  // Maximums
+  MAXRUDDER  = 100
+  MAXTHRUST  = 100
+}                                                
+                                

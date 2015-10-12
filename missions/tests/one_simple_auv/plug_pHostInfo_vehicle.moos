@@ -1,0 +1,7 @@
+ProcessConfig = pHostInfo
+{
+  AppTick   = 1
+  CommsTick = 1
+
+  DEFAULT_HOSTIP = $(VEHICLES_ADDRESS)
+}

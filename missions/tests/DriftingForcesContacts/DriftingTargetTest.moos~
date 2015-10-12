@@ -1,0 +1,283 @@
+//-------------------------------------------------
+// NAME: M. Benjamin, MIT CSAIL
+// FILE: bravo.moos
+//-------------------------------------------------
+
+ServerHost = localhost
+ServerPort = 9005
+Community  = DriftingTarget
+
+MOOSTimeWarp = 1
+
+// Forest Lake
+//LatOrigin  = 43.825300 
+//LongOrigin = -70.330400
+
+// MSEAS Red Sea Origin
+  LatOrigin  = 27.380000	
+  LongOrigin = 35.450000
+
+//------------------------------------------
+// Antler configuration  block
+ProcessConfig = ANTLER
+{
+  MSBetweenLaunches = 200
+
+  Run = MOOSDB			@ NewConsole = false
+  Run = pEchoVar		@ NewConsole = false
+  Run = uSimFolaga_CGG		@ NewConsole = false
+  Run = pFolagaPID_CGG 		@ NewConsole = false
+  Run = uSimConsumption_CGG 	@ NewConsole = false
+  Run = pHelmIvP		@ NewConsole = false
+  Run = pMarineViewer		@ NewConsole = false
+  Run = uProcessWatch		@ NewConsole = false
+  Run = pNodeReporter		@ NewConsole = false
+  //Run = iMSEASOceanModelDirect  @ NewConsole = false
+}
+
+//--------------------------------------------------------------
+// pEchoVar configuration block
+ 
+ProcessConfig = pEchoVar
+{
+  AppTick   = 20
+  CommsTick = 20
+  echo = NODE_REPORT_LOCAL  ->  NODE_REPORT
+  echo = DRIFT_X_FOR_DRIFTINGTARGET  ->  DRIFT_X
+  echo = DRIFT_Y_FOR_DRIFTINGTARGET  ->  DRIFT_Y
+}
+
+//------------------------------------------
+// uProcessWatch config block
+
+ProcessConfig = uProcessWatch
+{
+  AppTick   = 4
+  CommsTick = 4
+
+  summary_wait = 5
+
+  nowatch   = uXMS*
+  nowatch   = uMAC*
+  nowatch   = uPokeDB*
+  nowatch   = uTermCommand*
+  watch_all = true
+}
+
+ProcessConfig = uSimFolaga_CGG                                      
+{                                                               
+  AppTick   = 20                                                 
+  CommsTick = 20  
+  
+  PREFIX = NAV
+  START_POS = 0, 0, 180, 0                                 
+  
+  START_X = 0
+  START_Y = 0
+  START_HEADING = 0
+  START_SPEED = 0
+  START_DEPTH = 100
+  
+  START_DRIFT_X = 0.0
+  START_DRIFT_Y = 0.0
+  START_DRIFT_Z = 0
+  
+  MASS             = 31.0    // Folaga without payload
+  MAX_SPEED        = 1.0     // m/s
+  MAX_ROTATE_SPEED = 18.0    // degrees/sec
+  
+  // heading noise
+  HEADING_SIGMA       = 0.1
+  HEADING_MU          = 0.005
+  HEADING_SATURATION  = 1.0  // degrees/sec
+  
+  DRAG_MAP = 0.0:0.0, 0.1:0.26, 0.2:1.05, 0.3:2.37, 0.4:4.21, 0.5:6.58, 0.6:9.47, 0.7:12.89, 0.8:16.84, 0.9:21.31, 1.0:26.31  // newtons // from Folaga 2 knots = 90N
+  
+  DEFAULT_WATER_DEPTH = 0   // means we do not know anything about the water depth
+
+  SIM_PAUSE            = false // or {true}
+}
+
+//------------------------------------------
+// pHelmIvP config block
+
+ProcessConfig = pHelmIvP
+{
+  MaxAppTick = 10
+  AppTick    = 4
+  CommsTick  = 4
+
+  term_report_interval=0
+
+  bhv_dir_not_found_ok = true
+  ivp_behavior_dir = ../../../lib
+
+  behaviors  = DriftingTargetTest.bhv
+  domain     = course:0:359:360
+  domain     = speed:0:4:21
+}
+
+ProcessConfig = pFolagaPID_CGG                                     
+{                                                               
+  AppTick    = 10
+  CommsTick  = 10
+  
+  tardy_helm_threshold = 10.0 // old = 2.0 ; we increased it for testing                             
+  tardy_nav_threshold  = 10.0 // old = 2.0 ; we increased it for testing    
+ 
+  VERBOSE        = true
+  DEPTH_CONTROL  = true
+  ACTIVE_START   = true
+  SPD_PID_ACTIVE = false
+  
+  // Yaw PID controller
+  YAW_PID_KP               = 2.0
+  YAW_PID_KD               = 1.0
+  YAW_PID_KI               = 0.0
+  YAW_PID_INTEGRAL_LIMIT   = 0.0
+  
+  // Speed PID controller
+  SPEED_PID_KP             = 1.0
+  SPEED_PID_KD             = 0.0
+  SPEED_PID_KI             = 0.0
+  SPEED_PID_INTEGRAL_LIMIT = 0.07
+  
+  // Pitch PID controller
+  PITCH_PID_KP                   = 2.0
+  PITCH_PID_KD                   = 1.0
+  PITCH_PID_KI                   = 0.0
+  PITCH_PID_INTEGRAL_LIMIT       = 0.0
+
+  //ZPID controller
+  Z_TO_PITCH_PID_KP              = 7.2
+  Z_TO_PITCH_PID_KD              = 60.0
+  Z_TO_PITCH_PID_KI              = 0.24
+  Z_TO_PITCH_PID_INTEGRAL_LIMIT  = 3.0
+
+  // Mapping for speed control
+  DRAG_MAP = 0.0:0.0, 0.1:0.26, 0.2:1.05, 0.3:2.37, 0.4:4.21, 0.5:6.58, 0.6:9.47, 0.7:12.89, 0.8:16.84, 0.9:21.31, 1.0:26.31
+  
+  // Maximum heading error that allows propulsion
+  HEADING_LIMIT = 10.0        // degrees
+
+  // Maximums
+  MAX_PITCH     = 20.0        // degrees
+  MAX_SPEED     = 1.0         // m/s
+  MAX_SURGE_THRUST    = 100
+  MAX_HEADING_THRUST  = 100
+  MAX_PITCH_THRUST    = 100
+}
+
+ProcessConfig = uSimConsumption_CGG
+{
+  AppTick   = 4
+  CommsTick = 4
+  
+  EFFICIENCY_PROP       = 0.58
+  EFFICIENCY_SHAFT      = 0.7
+  EFFICIENCY_GEAR       = 0.9
+  EFFICIENCY_MOTOR      = 0.8
+  POWER_NOMINAL         = 1.5                       // W
+  CONSUMPTION_PER_PING  = 2.4                       // W.s .. 24W during 100ms
+  POWER_SPEED           = power=90.0,speed=1.0      // newtons,m/s .. to use with uSimMarine
+  ENERGY_PACK           = 520.0                     // WH
+  DECAYING_SPEED_RATIO  = true			    // true|false
+}
+
+//------------------------------------------
+// pMarineViewer config block
+
+ProcessConfig = pMarineViewer
+{
+  AppTick    = 4
+  CommsTick  = 4
+
+  //tiff_file            = forrest19.tif
+
+  set_pan_x            = -90
+  set_pan_y            = -280
+  zoom                 = 0.65
+  vehicle_shape_scale  = 1.5
+  hash_delta           = 50
+  hash_shade           = 0.4
+  hash_viewable        = true
+
+  trails_point_size   = 1
+
+  // Appcast configuration
+  appcast_height       = 75
+  appcast_width        = 30
+  appcast_viewable     = true
+  appcast_color_scheme = indigo
+  nodes_font_size      = medium
+  procs_font_size      = medium
+  appcast_font_size    = small
+  
+  //datum_viewable = true
+  //datum_size     = 18
+  //gui_size = small
+
+  left_context[change-drift-point] = WPT_UPDATES = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[survey-point] = DEPLOY=true
+  left_context[survey-point] = MOOS_MANUAL_OVERIDE=false
+  left_context[survey-point] = RETURN=false
+  left_context[change-return-point] = RETURN_UPDATES = points=$(XPOS),$(YPOS)
+  left_context[change-return-point] = VIEW_POINT = x=$(XPOS),y=$(YPOS),label=return point
+  left_context[change-return-point-and-return] = RETURN_UPDATES = points=$(XPOS),$(YPOS)
+  left_context[change-return-point-and-return] = VIEW_POINT = x=$(XPOS),y=$(YPOS),label=return point
+  left_context[change-return-point-and-return] = RETURN = true
+  left_context[view_poly] = VIEW_POLYGON = format=radial,x=$(XPOS),y=$(YPOS),radius=10,pts=8,edge_size=1,label=mypoly
+
+  right_context[return] = DEPLOY=true
+  right_context[return] = MOOS_MANUAL_OVERIDE=false
+  right_context[return] = RETURN=false
+
+  left_context[polyvert] = POLY_VERT=x=$(XPOS),y=$(YPOS)
+
+  scope  = RETURN
+  scope  = WPT_STAT
+  scope  = VIEW_SEGLIST
+  scope  = VIEW_POINT
+  scope  = VIEW_POLYGON
+  scope  = MVIEWER_LCLICK
+  scope  = MVIEWER_RCLICK
+
+  button_one = DEPLOY # DEPLOY=true
+  button_one = MOOS_MANUAL_OVERIDE=false # RETURN=false
+  button_two = RETURN:T # RETURN=true
+  button_three = RETURN:F # RETURN=false
+
+  action  = MENU_KEY=deploy # DEPLOY = true # RETURN = false
+  action+ = MENU_KEY=deploy # MOOS_MANUAL_OVERIDE=false
+  action  = RETURN=true
+  action  = UPDATES_RETURN=speed=1.4
+}
+
+//------------------------------------------
+// pNodeReporter config block
+
+ProcessConfig = pNodeReporter
+{
+  MaxAppTick    = 2
+  AppTick	= 2
+  CommsTick	= 2
+
+  platform_type   = AUV
+  platform_length = 4
+}
+
+
+ProcessConfig = iMSEASOceanModelDirect
+{
+   AppTick   = 1
+   CommsTick = 1
+
+   OCTAVE_PATH = ../../../src/iMSEASOceanModelDirect
+   MSEAS_FILEPATH = ../../../mseas_data/MIT_redsea_uvw_geo_201412010000_201412011200.nc
+   MSEAS_VARNAMES = u,v
+   MSEAS_TIME_OFFSET = 0.0
+   MODEL_TIME_WARP = 1.0
+   NODE_COMMUNITIES = DriftingTarget
+}
+
+

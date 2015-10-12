@@ -1,0 +1,9 @@
+//------------------------------------------------
+// pFormationQualityMetric config block
+
+ProcessConfig = pFormationQualityMetric
+{
+   AppTick   = 4
+   CommsTick = 4
+}
+

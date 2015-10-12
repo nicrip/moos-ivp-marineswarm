@@ -1,0 +1,15 @@
+// -----------------------------------------------
+//       ABSTRACT BEHAVIOR CONFIGURATION FILE     
+// -----------------------------------------------
+
+Behavior = ??
+{
+  // Formation_Behavior parameters:
+    // ... remind Formation_Behavior parameters
+  
+  // ContactsPing_Formation parameters:
+    // ... remind ContactsPing_Formation parameters
+    
+  // OneContact_PingFormation parameters:
+    contact_name = charlie                              // string
+}

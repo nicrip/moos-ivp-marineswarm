@@ -1,0 +1,12 @@
+ProcessConfig = iMSEASOceanModelDirect
+{
+   AppTick   = 1
+   CommsTick = 1
+
+   OCTAVE_PATH = ../../../../src/iMSEASOceanModelDirect
+   MSEAS_FILEPATH = ../../../../mseas_data/MIT_redsea_uvw_geo_201412010000_201412011200.nc
+   MSEAS_VARNAMES = u,v
+   MSEAS_TIME_OFFSET = 0.0
+   MODEL_TIME_WARP = 1.0
+   NODE_COMMUNITIES = alpha,bravo,charlie,delta,echo,foxtrot
+}

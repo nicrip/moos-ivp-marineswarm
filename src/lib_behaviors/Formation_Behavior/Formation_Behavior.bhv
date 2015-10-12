@@ -1,0 +1,16 @@
+// -----------------------------------------------
+//       ABSTRACT BEHAVIOR CONFIGURATION FILE     
+// -----------------------------------------------
+
+Behavior = ??
+{
+  // Formation_Behavior parameters:
+    int_radius = 15                                     // m
+    ext_radius = 30                                     // m
+    max_speed = 1.0                                     // m/s
+    display_targetpoints = true                         // true|false
+    display_radii = true                                // true|false
+    display_statistics = true                           // true|false
+    decaying_speed_ratio = true                         // true|false
+    filter_size_targetpoints = 4                        // int
+}

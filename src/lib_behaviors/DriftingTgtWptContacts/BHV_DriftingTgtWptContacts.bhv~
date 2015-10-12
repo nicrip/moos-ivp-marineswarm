@@ -1,0 +1,35 @@
+// -----------------------------------------------
+//       ABSTRACT BEHAVIOR CONFIGURATION FILE
+// -----------------------------------------------
+
+Behavior = ??
+{
+  // BHV_DriftingTarget parameters:
+    capture_radius = 3                                  // m double
+    slip_radius = 15                                    // m double
+    drifting_radius = 30                                // m double
+    speed = 1.0                                         // m/s double
+    display_filtered_target = true                      // true|false bool
+    display_unfiltered_targets = true                   // true|false bool
+    display_radii = true                                // true|false bool
+    display_statistics = true                           // true|false bool
+    display_drift = true                                // true|false bool
+    end_speed_scale = 1.0                               // 0.0 - 1.0 double
+    targets_filter_size = 4                             // int
+
+  // BHV_ManageAcousticPing parameters:
+    ping_filter_timeout = 40   	                        // s double
+    display_filtered_contact = false           		// true|false bool
+    display_unfiltered_contact = false  		// true|false bool
+    sound_speed = 1500					// m/s double -> use UPDATES parameter to update sound speed if necessary
+
+  // BHV_AcousticPingPlanner parameters:
+    node_offsets = name=alpha,     x=0,    y=0     	// string, m, m
+    node_offsets = name=bravo,     x=300,  y=0     	// string, m, m
+    node_offsets = name=charlie,   x=150,  y=259.81	// etc. ...
+
+  // BHV_DriftingTgtWptContacts parameters:
+    point_x = 100.0				        // double
+    point_y = -100.0				        // double
+    contact_whitelist = alpha,bravo,...			// comma delimited string				        
+}

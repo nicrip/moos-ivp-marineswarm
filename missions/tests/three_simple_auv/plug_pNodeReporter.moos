@@ -1,0 +1,7 @@
+ProcessConfig = pNodeReporter
+{
+  AppTick     = 2
+  CommsTick   = 2
+  
+  VESSEL_TYPE = $(VTYPE)
+}

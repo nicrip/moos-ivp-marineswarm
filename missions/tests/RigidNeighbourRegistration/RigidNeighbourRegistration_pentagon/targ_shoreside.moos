@@ -1,0 +1,209 @@
+//*******************************************************
+// ShoreSide Configuration File
+
+ServerHost = localhost
+ServerPort = 9000
+Community  = shoreside
+
+MOOSTimeWarp = 20
+LatOrigin  = 27.380000	
+LongOrigin = 35.450000
+
+
+  
+//--------------------------------------------------------
+Processconfig = ANTLER
+{
+  MSBetweenLaunches = 100
+
+  Run = MOOSDB          	@ NewConsole = false
+  Run = pMarineViewer   	@ NewConsole = false
+  Run = pShare          	@ NewConsole = false
+  Run = pHostInfo       	@ NewConsole = false
+  Run = uFldShoreBroker 	@ NewConsole = false
+  Run = uFldPingManager_CGG	@ NewConsole = false
+  Run = iMSEASOceanModelDirect	@ NewConsole = false
+  //Run = pContactsViewer_CGG	@ NewConsole = false
+}
+
+//------------------------------------------
+// pMarineViewer config block
+
+ProcessConfig = pMarineViewer
+{
+  AppTick    = 4
+  CommsTick  = 4
+
+  //tiff_file            = forrest19.tif
+
+  set_pan_x            = -90
+  set_pan_y            = -280
+  zoom                 = 0.65
+  vehicle_shape_scale  = 1.5
+  hash_delta           = 50
+  hash_shade           = 0.4
+  hash_viewable        = true
+
+  trails_point_size   = 1
+
+  // Appcast configuration
+  appcast_height       = 75
+  appcast_width        = 30
+  appcast_viewable     = true
+  appcast_color_scheme = indigo
+  nodes_font_size      = medium
+  procs_font_size      = medium
+  
+  //datum_viewable = true
+  //datum_size     = 18
+  //gui_size = small
+
+  vehicles_name_mode = names
+  trails_length = 10000 
+
+  left_context[survey-point] = DEPLOY=true
+  left_context[survey-point] = MOOS_MANUAL_OVERIDE=false
+  left_context[survey-point] = RETURN=false
+  left_context[change-return-point] = RETURN_UPDATES = points=$(XPOS),$(YPOS)
+  left_context[change-return-point] = VIEW_POINT = x=$(XPOS),y=$(YPOS),label=return point
+  left_context[change-return-point-and-return] = RETURN_UPDATES = points=$(XPOS),$(YPOS)
+  left_context[change-return-point-and-return] = VIEW_POINT = x=$(XPOS),y=$(YPOS),label=return point
+  left_context[change-return-point-and-return] = RETURN = true
+  left_context[view_poly] = VIEW_POLYGON = format=radial,x=$(XPOS),y=$(YPOS),radius=10,pts=8,edge_size=1,label=mypoly
+
+  right_context[return] = DEPLOY=true
+  right_context[return] = MOOS_MANUAL_OVERIDE=false
+  right_context[return] = RETURN=false
+
+  left_context[polyvert] = POLY_VERT=x=$(XPOS),y=$(YPOS)
+
+  scope  = RETURN
+  scope  = WPT_STAT
+  scope  = VIEW_SEGLIST
+  scope  = VIEW_POINT
+  scope  = VIEW_POLYGON
+  scope  = MVIEWER_LCLICK
+  scope  = MVIEWER_RCLICK
+
+  BUTTON_ONE   = DEPLOY  # DEPLOY_ALL=true 
+  BUTTON_ONE   = MOOS_MANUAL_OVERIDE_ALL=false 
+  BUTTON_ONE   = RETURN_ALL=false
+
+  BUTTON_TWO   = RETURN  # RETURN_ALL=true
+
+  action  = MENU_KEY=deploy # DEPLOY = true # RETURN = false
+  action+ = MENU_KEY=deploy # MOOS_MANUAL_OVERIDE=false
+  action  = RETURN=true
+  action  = UPDATES_RETURN=speed=1.4
+}
+
+//---------------------------------------------------------
+// pShare Config Block  (Created from Plugin)
+
+ProcessConfig = pShare
+{
+  AppTick    = 2
+  CommsTick  = 2
+
+  input = route =  localhost:9300
+}
+
+
+//--------------------------------------------------
+// pHostInfo configuration block from plugin
+
+ProcessConfig = pHostInfo
+{
+  AppTick 	= 1
+  CommsTick 	= 1
+
+  DEFAULT_HOSTIP = localhost
+}
+
+
+ProcessConfig = uFldShoreBroker
+{
+  AppTick   = 1
+  CommsTick = 1
+
+  // Note: [QBRIDGE = FOO]  is shorthand for                    
+  //       [BRIDGE = src=FOO_$V,  alias=FOO] and                
+  //       [BRIDGE = src=FOO_ALL, alias=FOO]
+
+  qbridge  = DEPLOY, RETURN, SURVEY, NODE_REPORT, NODE_MESSAGE
+  qbridge  = MOOS_MANUAL_OVERIDE, APPCAST_REQ
+  
+  bridge  = src=PING_REPORT_FOR_$V, alias=PING_REPORT
+  bridge  = src=DRIFT_X_FOR_$V, alias=DRIFT_X
+  bridge  = src=DRIFT_Y_FOR_$V, alias=DRIFT_Y
+  bridge  = src=DRIFT_Z_FOR_$V, alias=DRIFT_Z
+  bridge  = src=RELAYED_USM_RESET_$V, alias=USM_RESET
+  bridge  = src=RELAYED_DEPLOY_$V, alias=DEPLOY
+  bridge  = src=RELAYED_SHOT_ORDER_$V, alias=SHOT_ORDER
+  bridge  = src=NORTH
+  bridge  = src=EAST
+  bridge  = src=WEST
+  bridge  = src=SOUTH
+  bridge  = src=APPCAST_REQ
+}
+
+ProcessConfig = uFldPingManager_CGG
+{
+    common {
+        log: false
+        verbosity: QUIET
+    }
+
+    mission_duration: 10.0 // days
+    
+    sound_speed_min: 1500.0 // m/s
+    sound_speed_max: 1500.0 // m/s
+    sound_speed_variation: false
+    
+    exponentially_decaying_detection: false
+    
+    rho_noised: true
+    rho_gaussian_sigma: 1.5 // m
+    theta_noised: true
+    theta_gaussian_sigma: 5.0 // degrees
+    phi_noised: true
+    phi_gaussian_sigma: 5.0 // degrees
+    
+    display_ping_emission: false
+    display_ping_reception: true
+}
+
+ProcessConfig = iMSEASOceanModelDirect
+{
+   AppTick   = 1
+   CommsTick = 1
+
+   OCTAVE_PATH = ../../../../src/iMSEASOceanModelDirect
+   MSEAS_FILEPATH = ../../../../mseas_data/MIT_redsea_uvw_geo_201412010000_201412011200.nc
+   MSEAS_VARNAMES = u,v
+   MSEAS_TIME_OFFSET = 0.0
+   MODEL_TIME_WARP = 1.0
+   NODE_COMMUNITIES = alpha,bravo,charlie,delta,echo
+}
+
+ProcessConfig = pContactsViewer_CGG
+{
+  AppTick   = 1
+  CommsTick = 1
+  
+  //square
+  //DISPLAY_CONTACTS_SEGMENT = alpha,bravo            // string,string
+  //DISPLAY_CONTACTS_SEGMENT = bravo,charlie          // string,string
+  //DISPLAY_CONTACTS_SEGMENT = charlie,delta          // string,string
+  //DISPLAY_CONTACTS_SEGMENT = delta,alpha            // string,string
+
+  //arrow
+  DISPLAY_CONTACTS_SEGMENT = alpha,bravo            // string,string
+  DISPLAY_CONTACTS_SEGMENT = bravo,delta          // string,string
+  DISPLAY_CONTACTS_SEGMENT = delta,charlie          // string,string
+  DISPLAY_CONTACTS_SEGMENT = charlie,alpha            // string,string
+}
+
+
+
+

@@ -1,0 +1,14 @@
+ProcessConfig = uSimConsumption_CGG
+{
+  AppTick   = 1
+  CommsTick = 1
+  
+  EFFICIENCY_PROP       = 0.58
+  EFFICIENCY_SHAFT      = 0.7
+  EFFICIENCY_GEAR       = 0.9
+  EFFICIENCY_MOTOR      = 0.8
+  POWER_NOMINAL         = 1.0    // W
+  CONSUMPTION_PER_PING  = 1.0    // W.s
+  LOG_TIME_GAP          = 15.0   // min
+  ENABLE_LOGGING        = false
+}

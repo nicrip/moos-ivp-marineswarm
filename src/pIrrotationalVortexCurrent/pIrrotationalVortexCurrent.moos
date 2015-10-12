@@ -1,0 +1,9 @@
+//------------------------------------------------
+// pIrrotationalVortexCurrent config block
+
+ProcessConfig = pIrrotationalVortexCurrent
+{
+   AppTick   = 4
+   CommsTick = 4
+}
+

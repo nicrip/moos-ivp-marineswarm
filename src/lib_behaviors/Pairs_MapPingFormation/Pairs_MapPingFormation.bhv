@@ -1,0 +1,33 @@
+// -----------------------------------------------
+//           BEHAVIOR CONFIGURATION FILE          
+// -----------------------------------------------
+    
+Behavior = BHV_Pairs_MapPingFormation
+{
+  name = bhv_pairs
+  condition = MODE == REPOSITIONING
+  priority = 100
+  
+  // Formation_Behavior parameters:
+    int_radius = 15                                     // m
+    ext_radius = 30                                     // m
+    max_speed = 1.0                                     // m/s
+    display_targetpoints = true                         // true|false
+    display_radii = true                                // true|false
+    display_statistics = true                           // true|false
+    decaying_speed_ratio = true                         // true|false
+    filter_size_targetpoints = 4                        // int
+    
+  // ContactsPing_Formation parameters:
+    ping_expiration_delay = 40                          // s
+    display_contact_position_supposed = false           // true|false
+    display_filtered_contact_position_supposed = false  // true|false
+
+  // Map_PingFormation parameters:
+    add_swarm_element = name=alpha,     x=0,    y=0     // string, m, m
+    add_swarm_element = name=bravo,     x=0,    y=600
+    // ...
+
+  // Pairs_MapPingFormation parameters:
+    ping_expiration_distance = 650.0                    // m
+}

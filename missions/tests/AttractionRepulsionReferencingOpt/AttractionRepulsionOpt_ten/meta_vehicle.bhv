@@ -1,0 +1,72 @@
+//-----------------------------------------------
+// Helm Behavior file 
+
+initialize   DEPLOY = false
+initialize   RETURN = false
+
+//----------------------------------------------
+Behavior = BHV_AttractionRepulsionReferencingOpt
+{
+    name = bhv_attractionrepulsionreferencingopt
+    condition = RETURN = false
+    condition = DEPLOY = true
+    endflag   = RETURN = true
+    priority  = 100
+
+  // BHV_DriftingTarget parameters:
+    capture_radius = 3                                  // m double
+    slip_radius = 15                                    // m double
+    drifting_radius = 30                                // m double
+    speed = 1.0                                         // m/s double
+    display_filtered_target = true                      // true|false bool
+    display_unfiltered_targets = false                  // true|false bool
+    display_radii = true                                // true|false bool
+    display_statistics = true                           // true|false bool
+    display_drift = true                                // true|false bool
+    end_speed_scale = 0.25                              // 0.0 - 1.0 double
+    targets_filter_size = 1                             // int
+
+  // BHV_ManageAcousticPing parameters:
+    ping_filter_timeout = 120   	              	// s double
+    contact_timeout = 120				// s double
+    display_filtered_contact = false           		// true|false bool
+    display_unfiltered_contact = false	  		// true|false bool
+    sound_speed = 1500					// m/s double -> use UPDATES parameter to update sound speed if necessary
+
+  // BHV_AcousticPingPlanner parameters:
+    //square
+    node_offsets = name=alpha,     x=0,    y=0     	// string, m, m
+    node_offsets = name=bravo,     x=0,    y=300     	// string, m, m
+    node_offsets = name=charlie,   x=0,    y=600	// etc. ...
+    node_offsets = name=delta,     x=300,  y=0
+    node_offsets = name=echo,      x=300,  y=300
+    node_offsets = name=foxtrot,   x=300,  y=600
+    node_offsets = name=golf,      x=600,  y=0
+    node_offsets = name=hotel,     x=600,  y=300
+    node_offsets = name=india,     x=600,  y=600
+    node_offsets = name=juliett,   x=600,  y=900
+
+  // BHV_AttractionRepulsionOpt parameters:
+    contact_rangeout = 650				// m double
+    force_rangeout = 650				// m double
+    weight_targets = pingtime=true,distance=true	// pingtime=true|false,distance=true|false string
+}
+
+//----------------------------------------------
+Behavior=BHV_Waypoint
+{
+  name       = waypt_return
+  pwt        = 100
+  condition  = RETURN = true
+  condition  = DEPLOY = true
+  perpetual  = true
+  endflag    = RETURN = false
+  endflag    = DEPLOY = false
+  endflag    = MISSION = complete
+  updates    = RETURN_UPDATES
+
+           speed = 2.0
+  capture_radius = 2.0
+     slip_radius = 8.0
+          points = 0,0
+}

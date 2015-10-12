@@ -1,0 +1,9 @@
+//------------------------------------------------
+// pFormationViewer config block
+
+ProcessConfig = pFormationViewer
+{
+   AppTick   = 4
+   CommsTick = 4
+}
+

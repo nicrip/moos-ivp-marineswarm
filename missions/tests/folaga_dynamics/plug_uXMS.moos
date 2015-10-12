@@ -1,0 +1,19 @@
+ProcessConfig = uXMS
+{
+  AppTick   = 2
+  CommsTick = 2
+  
+  VAR = PMB_REGISTER
+  VAR = PMB_UDP_LISTEN
+  VAR = APPCAST_REQ
+  VAR = DB_CLIENTS
+  VAR = PROC_WATCH_SUMMARY
+  VAR = CRS_RANGE_REQUEST
+  VAR = CRS_RANGE_REPORT
+
+  DISPLAY_SOURCE        = true
+  DISPLAY_TIME          = true
+  DISPLAY_COMMUNITY     = false   // default
+
+  REFRESH_MODE = streaming
+}

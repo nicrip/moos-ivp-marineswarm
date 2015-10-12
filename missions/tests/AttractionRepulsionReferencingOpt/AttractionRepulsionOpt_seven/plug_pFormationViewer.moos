@@ -1,0 +1,28 @@
+ProcessConfig = pFormationViewer
+{
+  AppTick   = 1
+  CommsTick = 1
+
+  //arrow
+  NODE_PAIR_SEGMENT = alpha,bravo
+  NODE_PAIR_SEGMENT = alpha,charlie
+  NODE_PAIR_SEGMENT = alpha,delta
+  NODE_PAIR_SEGMENT = alpha,echo
+  NODE_PAIR_SEGMENT = alpha,foxtrot
+  NODE_PAIR_SEGMENT = alpha,golf
+  NODE_PAIR_SEGMENT = bravo,charlie
+  NODE_PAIR_SEGMENT = bravo,delta
+  NODE_PAIR_SEGMENT = bravo,echo
+  NODE_PAIR_SEGMENT = bravo,foxtrot
+  NODE_PAIR_SEGMENT = bravo,golf
+  NODE_PAIR_SEGMENT = charlie,delta
+  NODE_PAIR_SEGMENT = charlie,echo
+  NODE_PAIR_SEGMENT = charlie,foxtrot
+  NODE_PAIR_SEGMENT = charlie,golf
+  NODE_PAIR_SEGMENT = delta,echo
+  NODE_PAIR_SEGMENT = delta,foxtrot
+  NODE_PAIR_SEGMENT = delta,golf
+  NODE_PAIR_SEGMENT = echo,foxtrot
+  NODE_PAIR_SEGMENT = echo,golf
+  NODE_PAIR_SEGMENT = foxtrot,golf
+}

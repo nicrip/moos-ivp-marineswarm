@@ -1,0 +1,8 @@
+#include <iostream>
+#include "Ping/PingContact.h"
+#include "Geometry/IncrementalConvexHull.h"
+
+int main()
+{
+  std::cout << "Hello World!";
+}

@@ -1,0 +1,18 @@
+ProcessConfig = pHelmIvP
+{
+  AppTick    = 2
+  CommsTick  = 2
+  
+  Behaviors    = targ_$(VNAME).bhv  
+  Verbose      = false
+  Domain       = course:0:359:36
+  Domain       = speed:0:1.5:15
+
+  IVP_BEHAVIOR_DIR = ../../lib
+
+  Domain       = depth:0:150:151:optional
+
+
+  ok_skew = any
+  active_start = true
+}

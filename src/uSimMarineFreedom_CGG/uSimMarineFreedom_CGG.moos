@@ -1,0 +1,26 @@
+=============================================================== 
+uSimMarineFreedom_CGG Example MOOS Configuration                           
+=============================================================== 
+                                                                
+ProcessConfig = uSimMarineFreedom_CGG                                  
+{                                                               
+  AppTick   = 100                                           
+  CommsTick = 100
+                                                                
+  START_X       = 0                                             
+  START_Y       = 0                                             
+  START_HEADING = 0                                             
+  START_SPEED   = 0                                             
+  START_DEPTH   = 0
+  
+  SPEED_THRESHOLD = 0.1                                           
+                                                               
+  SIM_PAUSE     = false // or {true}    
+  
+  PREFIX        = NAV              
+  
+  MAX_THRUST_FORCE = 7    // newtons. For Remus, this corresponds to 4 knots
+  MAX_RUDDER_ANGLE = 13.6    // degrees
+  MAX_ELEVATOR_ANGLE = 13.6  // degrees
+}                                                               
+                                        

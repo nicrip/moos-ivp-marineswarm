@@ -1,0 +1,14 @@
+// -----------------------------------------------
+//       ABSTRACT BEHAVIOR CONFIGURATION FILE     
+// -----------------------------------------------
+
+Behavior = ??
+{
+  // Formation_Behavior parameters:
+    // ... remind Formation_Behavior parameters
+  
+  // ContactsPing_Formation parameters:
+    ping_expiration_delay = 40                          // s
+    display_contact_position_supposed = false           // true|false
+    display_filtered_contact_position_supposed = false  // true|false
+}

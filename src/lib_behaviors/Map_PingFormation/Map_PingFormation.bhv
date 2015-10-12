@@ -1,0 +1,17 @@
+// -----------------------------------------------
+//       ABSTRACT BEHAVIOR CONFIGURATION FILE     
+// -----------------------------------------------
+
+Behavior = ??
+{
+  // Formation_Behavior parameters:
+    // ... remind Formation_Behavior parameters
+  
+  // ContactsPing_Formation parameters:
+    // ... remind ContactsPing_Formation parameters
+    
+  // Map_PingFormation parameters:
+    add_swarm_element = name=alpha,     x=0,    y=0     // string, m, m
+    add_swarm_element = name=bravo,     x=0,    y=600
+    // ...
+}

@@ -1,0 +1,22 @@
+import "goby/acomms/protobuf/driver_base.proto";
+import "dccl/protobuf/option_extensions.proto";
+
+
+package moossafir;
+
+message Config
+{
+  extend goby.acomms.protobuf.DriverConfig 
+  {
+    optional string moos_server = 1401 [default="localhost"];
+    optional int32 moos_port = 1402 [default=9000];
+
+    optional string incoming_moos_var = 1403 [default="PING_REPORT"];
+    optional string outgoing_moos_var = 1404 [default="PING"];
+
+    repeated int32 rate_to_bytes = 1405;
+
+    optional int32 ping_range = 1406 [default=550];
+    
+  }
+}

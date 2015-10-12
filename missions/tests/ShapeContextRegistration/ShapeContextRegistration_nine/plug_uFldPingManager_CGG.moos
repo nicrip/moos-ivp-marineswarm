@@ -1,0 +1,25 @@
+ProcessConfig = uFldPingManager_CGG
+{
+    common {
+        log: false
+        verbosity: QUIET
+    }
+
+    mission_duration: 10.0 // days
+    
+    sound_speed_min: 1500.0 // m/s
+    sound_speed_max: 1500.0 // m/s
+    sound_speed_variation: false
+    
+    exponentially_decaying_detection: false
+    
+    rho_noised: false
+    rho_gaussian_sigma: 1.5 // m
+    theta_noised: false
+    theta_gaussian_sigma: 5.0 // degrees
+    phi_noised: false
+    phi_gaussian_sigma: 5.0 // degrees
+    
+    display_ping_emission: false
+    display_ping_reception: true
+}

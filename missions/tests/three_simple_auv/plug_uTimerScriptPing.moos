@@ -1,0 +1,12 @@
+ProcessConfig = uTimerScriptPing
+{
+  AppTick     = $(PING_FREQUENCY)
+  CommsTick   = $(PING_FREQUENCY)
+  RESET_MAX   = unlimited
+  RESET_TIME  = end
+  PAUSED      = false
+  
+  #ifdef VNAME mike
+  EVENT = var=PING, val="range=$(ACOUSTIC_RANGE)"
+  #endif
+}

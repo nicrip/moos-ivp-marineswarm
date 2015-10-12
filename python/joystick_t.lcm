@@ -1,0 +1,6 @@
+package exlcm;
+
+struct joystick_t
+{
+    double   values[17];
+}

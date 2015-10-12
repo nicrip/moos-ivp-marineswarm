@@ -1,0 +1,19 @@
+// -----------------------------------------------
+//       ABSTRACT BEHAVIOR CONFIGURATION FILE
+// -----------------------------------------------
+
+Behavior = ??
+{
+  // BHV_DriftingForces parameters:
+    capture_radius = 3                                  // m double
+    slip_radius = 15                                    // m double
+    drifting_radius = 30                                // m double
+    speed = 1.0                                         // m/s double
+    display_filtered_target = true                      // true|false bool
+    display_unfiltered_targets = true                   // true|false bool
+    display_radii = true                                // true|false bool
+    display_statistics = true                           // true|false bool
+    display_drift = true                                // true|false bool
+    end_speed_scale = 1.0                               // 0.0 - 1.0 double
+    targets_filter_size = 4                             // int
+}

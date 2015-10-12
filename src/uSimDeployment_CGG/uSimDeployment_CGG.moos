@@ -1,0 +1,18 @@
+===============================================================
+uSimDeployment_CGG Example MOOS Configuration
+===============================================================
+
+ProcessConfig = uSimDeployment_CGG
+{
+  AppTick   = 1
+  CommsTick = 1
+  
+  LAUNCH_POINT=1                                    // int
+    DEPLOY_VEHICLE      = alpha                     // string
+    DEPLOY_VEHICLE      = charlie                   // string
+    DEPLOY_VEHICLE      = echo                      // string
+
+  LAUNCH_POINT=2                                    // int
+    DEPLOY_VEHICLE      = bravo                     // string
+    DEPLOY_VEHICLE      = delta                     // string
+}

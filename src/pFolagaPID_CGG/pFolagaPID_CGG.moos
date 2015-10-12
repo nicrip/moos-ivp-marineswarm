@@ -1,0 +1,55 @@
+=============================================================== 
+pFolagaPID_CGG Example MOOS Configuration                           
+=============================================================== 
+                                                                
+ProcessConfig = pFolagaPID_CGG                                     
+{                                                               
+  AppTick    = 20
+  CommsTick  = 20
+  
+  tardy_helm_threshold = 2.0                         
+  tardy_nav_threshold  = 2.0
+ 
+  VERBOSE        = true
+  DEPTH_CONTROL  = true
+  ACTIVE_START   = true
+  SPD_PID_ACTIVE = false
+  
+  // Yaw PID controller
+  YAW_PID_KP               = 2.0
+  YAW_PID_KD               = 1.0
+  YAW_PID_KI               = 0.0
+  YAW_PID_INTEGRAL_LIMIT   = 0.0
+  
+  // Speed PID controller
+  SPEED_PID_KP             = 1.0
+  SPEED_PID_KD             = 0.0
+  SPEED_PID_KI             = 0.0
+  SPEED_PID_INTEGRAL_LIMIT = 0.07
+  
+  // Pitch PID controller
+  PITCH_PID_KP                   = 2.0
+  PITCH_PID_KD                   = 1.0
+  PITCH_PID_KI                   = 0.0
+  PITCH_PID_INTEGRAL_LIMIT       = 0.0
+
+  //ZPID controller
+  Z_TO_PITCH_PID_KP              = 7.2
+  Z_TO_PITCH_PID_KD              = 60.0
+  Z_TO_PITCH_PID_KI              = 0.24
+  Z_TO_PITCH_PID_INTEGRAL_LIMIT  = 3.0
+
+  // Mapping for speed control pair = speed(m/s):drag_force(newtons)
+  DRAG_MAP = 0.0:0.0, 0.1:0.26, 0.2:1.05, 0.3:2.37, 0.4:4.21, 0.5:6.58, 0.6:9.47, 0.7:12.89, 0.8:16.84, 0.9:21.31, 1.0:26.31
+  
+  // Maximum heading error that allows propulsion
+  HEADING_LIMIT = 10.0        // degrees
+
+  // Maximums
+  MAX_PITCH     = 20.0        // degrees
+  MAX_SPEED     = 1.0         // m/s
+  MAX_SURGE_THRUST    = 100
+  MAX_HEADING_THRUST  = 100
+  MAX_PITCH_THRUST    = 100
+}
+

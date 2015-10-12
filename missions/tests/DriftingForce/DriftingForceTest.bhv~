@@ -1,0 +1,52 @@
+//--------    FILE: alpha.bhv   -------------
+
+initialize   DEPLOY = false
+initialize   RETURN = false
+
+//----------------------------------------------
+Behavior = BHV_DriftingForceWaypoint
+{
+    name = bhv_driftingforcewpt
+    condition = RETURN = false
+    condition = DEPLOY = true
+    endflag   = RETURN = true
+    UPDATES   = WPT_UPDATES
+    priority  = 100
+
+  // BHV_DriftingTarget parameters:
+    capture_radius = 3                                  // m double
+    slip_radius = 15                                    // m double
+    drifting_radius = 30                                // m double
+    speed = 1.0                                         // m/s double
+    display_filtered_target = true                      // true|false bool
+    display_unfiltered_targets = true                   // true|false bool
+    display_radii = true                                // true|false bool
+    display_statistics = true                           // true|false bool
+    display_drift = true                                // true|false bool
+    end_speed_scale = 0.9                               // 0.0 - 1.0 double
+    targets_filter_size = 20                            // int
+
+  // BHV_DriftingTargetWaypoint parameters:
+    point_x = 100.0				        // double
+    point_y = -100.0				        // double
+}
+
+//----------------------------------------------
+Behavior=BHV_Waypoint
+{
+  name       = waypt_return
+  pwt        = 100
+  condition  = RETURN = true
+  condition  = DEPLOY = true
+  perpetual  = true
+  endflag    = RETURN = false
+  endflag    = DEPLOY = false
+  endflag    = MISSION = complete
+  updates    = RETURN_UPDATES
+
+           speed = 2.0
+  capture_radius = 2.0
+     slip_radius = 8.0
+          points = 0,0
+}
+

@@ -1,0 +1,41 @@
+ProcessConfig = pMarineViewer
+{
+  AppTick    = 4
+  CommsTick  = 4
+  
+  TIFF_FILE         = AREA_ALPHA_EARTH.tif
+  tiff_viewable     = false
+  center_view       = average
+  //zoom              = 100 
+  
+  hash_delta        = 100
+  hash_shade        = 0.4
+  hash_viewable     = true
+  
+  trails_length     = 90
+
+  vehicles_name_viewable = names
+ 
+  appcast_viewable     = true
+  appcast_color_scheme = indigo
+
+  BUTTON_ONE   = SOUTH  # SOUTH=true 
+  BUTTON_ONE   = NORTH=false 
+  BUTTON_ONE   = EAST=false 
+  BUTTON_ONE   = WEST=false 
+  
+  BUTTON_TWO   = NORTH  # NORTH=true
+  BUTTON_TWO   = SOUTH=false
+  BUTTON_TWO   = EAST=false
+  BUTTON_TWO   = WEST=false 
+  
+  BUTTON_THREE = EAST  # EAST=true
+  BUTTON_THREE = NORTH=false 
+  BUTTON_THREE = SOUTH=false
+  BUTTON_THREE = WEST=false 
+  
+  BUTTON_FOUR  = WEST  # WEST=true
+  BUTTON_FOUR  = NORTH=false
+  BUTTON_FOUR  = SOUTH=false
+  BUTTON_FOUR  = EAST=false
+}

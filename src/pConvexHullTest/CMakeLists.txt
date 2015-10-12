@@ -1,0 +1,25 @@
+#--------------------------------------------------------
+# The CMakeLists.txt for:                       pConvexHullTest
+# Author(s):                              
+#--------------------------------------------------------
+
+# FILE(GLOB SRC *.cpp)
+
+SET(SRC
+  ConvexHullTest.cpp
+  ConvexHullTest_Info.cpp
+  main.cpp
+)
+
+
+
+ADD_EXECUTABLE(pConvexHullTest ${SRC})
+
+TARGET_LINK_LIBRARIES(pConvexHullTest
+   ${MOOS_LIBRARIES}
+   geometry
+   mbutil
+   m
+   pthread
+   IncrementalConvexHull)
+

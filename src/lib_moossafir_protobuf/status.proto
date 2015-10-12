@@ -1,0 +1,54 @@
+import "dccl/protobuf/option_extensions.proto";
+
+package moossafir;
+
+message Status { 
+  option (dccl.msg).id = 2000001;
+  option (dccl.msg).max_bytes = 13;
+  option (dccl.msg).codec_version = 3;
+
+  required int32 node = 1 [(dccl.field).max=200,
+                           (dccl.field).min=0,
+                           (dccl.field).in_head=true];
+  
+  // m
+  required double x = 10 [(dccl.field).max=100000,
+                          (dccl.field).min=-100000,
+                          (dccl.field).precision=0];
+  
+  // m
+  required double y = 11 [(dccl.field).max=100000,
+                          (dccl.field).min=-100000,
+                          (dccl.field).precision=0];
+  
+  // m/s 
+  required double speed = 12 [(dccl.field).max=2.0,
+                              (dccl.field).min=0,
+                              (dccl.field).precision=1];
+
+  // deg
+  required double heading = 13 [(dccl.field).max=360,
+                                (dccl.field).min=0,
+                                (dccl.field).precision=0];
+  
+  // m
+  required double depth = 14 [(dccl.field).max=200,
+                              (dccl.field).min=0,
+                              (dccl.field).precision=0];
+
+  // m/s 
+  required double drift_x = 15 [(dccl.field).max=0.5,
+                                (dccl.field).min=-0.5,
+                                (dccl.field).precision=2];
+
+  // m/s 
+  required double drift_y = 16 [(dccl.field).max=0.5,
+                                (dccl.field).min=-0.5,
+                                (dccl.field).precision=2];
+
+  // joules
+  required double power_consumption = 17 [(dccl.field).max=3600000, // 1 kW-hr
+                                          (dccl.field).min=0,
+                                          (dccl.field).precision=-3];
+
+}

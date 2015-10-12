@@ -1,0 +1,9 @@
+//------------------------------------------------
+// pShoreLogger config block
+
+ProcessConfig = pShoreLogger
+{
+   AppTick   = 4
+   CommsTick = 4
+}
+

@@ -1,0 +1,10 @@
+List of Final Algorithms:
+
+AttractionRepulsionOpt -> finalized
+AttractionRepulsionReferencingOpt  -> finalized
+
+PairwiseNeighbourReferencing  -> finalized
+#PairwiseNeighbourAngularOpt
+
+RigidNeighbourRegistration
+#RigidNeighbourRegistrationOpt

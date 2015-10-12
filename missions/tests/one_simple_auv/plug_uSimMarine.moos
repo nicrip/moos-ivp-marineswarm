@@ -1,0 +1,33 @@
+//------------------------------------------------------
+// uSimMarine Configuration Block  (Created from plugin)
+
+ProcessConfig = uSimMarine
+{
+  AppTick   = 20
+  CommsTick = 20
+
+  START_POS = $(START_POS), 180, 0
+  PREFIX    = NAV
+
+//  DRIFT_X   = 0.3
+//  DRIFT_Y   = 0.5 
+
+  SIM_PAUSE            = false // or {true}                  
+  DUAL_STATE           = false // or {true}                  
+  THRUST_REFLECT       = false // or {true}                  
+  THRUST_FACTOR        = 0    // range [0,inf)              
+  TURN_RATE            = 50    // range [0,100]              
+  
+  // from Graaltech rough data
+  // THRUST = 50 -> SPEED = 1
+  THRUST_MAP           = 0:0, 20:0.63, 40:0.89, 60:1.10, 80:1.26, 100:1.41    
+  
+  
+  #ifdef VTYPE UUV
+    BUOYANCY_RATE    = 0.0
+    MAX_ACCELERATION     = 0.2     // meters/sec^2               
+    MAX_DECELERATION     = 0.1   // meters/sec^2     
+    MAX_DEPTH_RATE = 0.5
+    MAX_DEPTH_RATE_SPEED = 2.0
+  #endif
+}                                                               

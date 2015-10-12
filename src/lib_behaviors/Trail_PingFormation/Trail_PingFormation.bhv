@@ -1,0 +1,32 @@
+// -----------------------------------------------
+//           BEHAVIOR CONFIGURATION FILE          
+// -----------------------------------------------
+
+Behavior = BHV_Trail_PingFormation
+{
+  name = bhv_west_trail_formation
+  condition = MODE == REPOSITIONING
+  priority = 100
+  
+  // Formation_Behavior parameters:
+    int_radius = 15                                     // m
+    ext_radius = 30                                     // m
+    max_speed = 1.0                                     // m/s
+    display_targetpoints = true                         // true|false
+    display_radii = true                                // true|false
+    display_statistics = true                           // true|false
+    decaying_speed_ratio = true                         // true|false
+    filter_size_targetpoints = 4                        // int
+  
+  // ContactsPing_Formation parameters:
+    ping_expiration_delay = 40                          // s
+    display_contact_position_supposed = false           // true|false
+    display_filtered_contact_position_supposed = false  // true|false
+  
+  // OneContact_PingFormation parameters:
+    contact_name = bravo                                // string
+  
+  // Trail_PingFormation parameters:
+    trail_dx = 300                                      // m
+    trail_dy = 0                                        // m
+}

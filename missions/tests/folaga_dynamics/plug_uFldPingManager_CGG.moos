@@ -1,0 +1,21 @@
+ProcessConfig = uFldPingManager_CGG
+{
+  AppTick   = 100
+  CommsTick = 2
+  // 0=REGULAR_ITERATE_AND_MAIL 1=COMMS_DRIVEN_ITERATE_AND_MAIL 2=REGULAR_ITERATE_AND_COMMS_DRIVEN_MAIL
+  IterateMode = 2
+   
+  SOUND_SPEED = $(SOUND_SPEED)
+  
+  // if SOUND_SPEED not defined:
+  WATER_TEMPERATURE = $(WATER_TEMPERATURE)
+  WATER_SALINITY = $(WATER_SALINITY)
+  
+  EXPONENTIALLY_DECAYING_DETECTION = true
+  
+  //RN_ALGORITHM = uniform
+  //RN_UNIFORM_PCT = 0.12    // values in the range [0,1]
+  //RN_GAUSSIAN_SIGMA = 20    // values in the range [0,inf]
+  
+  DISPLAY_PING_EMISSION = false
+}

@@ -1,0 +1,20 @@
+//------------------------------------------------------
+// uSimMarine Configuration Block  (Created from plugin)
+
+ProcessConfig = uSimMarine
+{
+  AppTick   = 10
+  CommsTick = 10
+
+  START_POS = $(START_POS), 30, 0
+  PREFIX    = NAV
+
+//  DRIFT_X   = 0.3
+//  DRIFT_Y   = 0.5 
+
+  #ifdef VTYPE UUV
+    BUOYANCY_RATE    = 0.025
+    MAX_DEPTH_RATE = 0.5
+    MAX_DEPTH_RATE_SPEED = 2.0
+  #endif
+}

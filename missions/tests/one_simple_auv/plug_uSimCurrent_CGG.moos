@@ -1,0 +1,75 @@
+ProcessConfig = uSimCurrent_CGG
+{
+  AppTick   = 1
+  CommsTick = 1
+  
+  DISPLAY_VIEWER = false
+  PATH_TO_FONTS_DIRECTORY = fonts
+  WINDOW_SIZE = 500 // px
+  AREA_SIZE = 2000.0 // m
+  ARROW_GAP = 30 // px
+  CAPTURE_TIME = 0 // s
+  DISPLAY_BACKGROUND = true
+  OPERATION_DEPTH = 200.0 // m
+  LOW_DISPLAY_MODE = false
+  
+  // Constant current
+  ADD_CURRENT_MODEL = constant
+  CURRENT_NAME = global
+  ACTIVE = false
+    CONSTANT__DRIFT_X = 0.4 // m/s
+    CONSTANT__DRIFT_Y = 0.1 // m/s
+    CONSTANT__DRIFT_Z = 0.0 // m/s
+  
+  // Random current
+  ADD_CURRENT_MODEL = random
+  CURRENT_NAME = large_scale
+  ACTIVE = false
+    RANDOM__SOURCE_GAP = 300. // m
+    RANDOM__SOURCE_PERIOD = 100 // nb (grid size becomes RANDOM__SOURCE_PERIOD x RANDOM__SOURCE_GAP)
+    RANDOM__MAX_SPEED = 0.05 // m/s
+  
+  // Random current
+  ADD_CURRENT_MODEL = random
+  CURRENT_NAME = huge_random
+  ACTIVE = false
+    RANDOM__SOURCE_GAP = 300. // m
+    RANDOM__SOURCE_PERIOD = 100 // nb (grid size becomes RANDOM__SOURCE_PERIOD x RANDOM__SOURCE_GAP)
+    RANDOM__MAX_SPEED = 0.3 // m/s
+  
+  // Random current
+  ADD_CURRENT_MODEL = random
+  CURRENT_NAME = small_scale
+  ACTIVE = false
+    RANDOM__SOURCE_GAP = 30. // m
+    RANDOM__SOURCE_PERIOD = 1000 // nb (grid size becomes RANDOM__SOURCE_PERIOD x RANDOM__SOURCE_GAP)
+    RANDOM__MAX_SPEED = 0.01 // m/s
+  
+  // Langmuir current
+  ADD_CURRENT_MODEL = langmuir
+  CURRENT_NAME = langmuir_1
+  ACTIVE = false
+    LANGMUIR__RANGE = 10000.0 // m
+    LANGMUIR__CELL_LENGTH = 150.0 // m
+    LANGMUIR__MAX_SPEED = 0.02 // m/s
+    LANGMUIR__WIND_DIRECTION = -45.0 // degrees
+    LANGMUIR__PERC_10 = 1.0
+  
+  // Soliton current
+  ADD_CURRENT_MODEL = soliton
+  CURRENT_NAME = soliton_1
+  ACTIVE = false
+    SOLITON__FIRST_FRONT_AT_ZERO = 600.0 // s
+    SOLITON__TIDE_DIRECTION = 70.0 // degrees
+    SOLITON__MAX_HORIZONTAL_SPEED = 0.8 // m/s
+    SOLITON__MAX_VERTICAL_AMPLITUDE = 30.0 // m
+    SOLITON__NUMBER_OF_WAVES = 4 // integer
+  
+  // Shear current
+  ADD_CURRENT_MODEL = shear
+  CURRENT_NAME = shear_1
+  ACTIVE = false
+    SHEAR__GAP = 500.0 // m
+    SHEAR__THETA = 60.0 // degrees
+    SHEAR__MAX_SPEED = 0.02 // m/s
+}

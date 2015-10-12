@@ -1,0 +1,33 @@
+//*******************************************************
+// ShoreSide Configuration File
+
+ServerHost = localhost
+ServerPort = $(VPORT)
+Community  = $(VNAME)
+
+#include plug_origin_warp.moos
+  
+//--------------------------------------------------------
+Processconfig = ANTLER
+{
+  MSBetweenLaunches = 100
+
+  Run = MOOSDB          	@ NewConsole = false
+  Run = pMarineViewer   	@ NewConsole = false
+  Run = pShare          	@ NewConsole = false
+  Run = pHostInfo       	@ NewConsole = false
+  Run = uFldShoreBroker 	@ NewConsole = false
+  Run = uFldPingManager_CGG	@ NewConsole = false
+  Run = iMSEASOceanModelDirect	@ NewConsole = false
+  Run = pFormationViewer	@ NewConsole = false
+}
+
+#include plug_pMarineViewer.moos
+#include plug_pShare.moos
+#include plug_pHostInfo.moos
+#include plug_uFldShoreBroker.moos
+#include plug_uFldPingManager_CGG.moos
+#include plug_iMSEASOceanModelDirect.moos
+#include plug_pFormationViewer.moos
+
+

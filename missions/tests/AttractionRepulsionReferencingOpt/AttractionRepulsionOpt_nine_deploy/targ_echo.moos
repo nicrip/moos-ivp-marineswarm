@@ -1,0 +1,351 @@
+ServerHost = localhost
+ServerPort = 9005
+
+// Community name IS the vehicle name
+Community  = echo
+
+MOOSTimeWarp = 10
+LatOrigin  = 27.380000	
+LongOrigin = 35.450000
+
+
+  
+//------------------------------------------------------------
+Processconfig = ANTLER
+{
+  MSBetweenLaunches = 50
+   
+  Run = MOOSDB             	@ NewConsole = false
+  Run = uSimFolaga_CGG		@ NewConsole = false
+  Run = pFolagaPID_CGG 		@ NewConsole = false
+  Run = uSimConsumption_CGG 	@ NewConsole = false
+  Run = pHelmIvP		@ NewConsole = false
+  Run = pNodeReporter      	@ NewConsole = false
+  Run = uProcessWatch      	@ NewConsole = false
+  Run = pShare             	@ NewConsole = false
+  Run = pHostInfo          	@ NewConsole = false
+  Run = uFldNodeBroker     	@ NewConsole = false
+  Run = pAcommsHandler_CGG              @ LaunchType=Screen
+}
+ 
+ProcessConfig = uSimFolaga_CGG                                      
+{                                                               
+  AppTick   = 20                                                 
+  CommsTick = 20  
+  
+  PREFIX = NAV
+  START_POS = -50,100, 180, 0                                 
+  
+  START_X = 0
+  START_Y = 0
+  START_HEADING = 0
+  START_SPEED = 0
+  START_DEPTH = 100
+  
+  START_DRIFT_X = 0.1
+  START_DRIFT_Y = 0.1
+  START_DRIFT_Z = 0
+  
+  MASS             = 31.0    // Folaga without payload
+  MAX_SPEED        = 1.0     // m/s
+  MAX_ROTATE_SPEED = 18.0    // degrees/sec
+  
+  // heading noise
+  HEADING_SIGMA       = 0.1
+  HEADING_MU          = 0.005
+  HEADING_SATURATION  = 1.0  // degrees/sec
+  
+  DRAG_MAP = 0.0:0.0, 0.1:0.26, 0.2:1.05, 0.3:2.37, 0.4:4.21, 0.5:6.58, 0.6:9.47, 0.7:12.89, 0.8:16.84, 0.9:21.31, 1.0:26.31  // newtons // from Folaga 2 knots = 90N
+  
+  DEFAULT_WATER_DEPTH = 0   // means we do not know anything about the water depth
+
+  SIM_PAUSE            = false // or {true}
+}
+
+ProcessConfig = pFolagaPID_CGG                                     
+{                                                               
+  AppTick    = 10
+  CommsTick  = 10
+  
+  tardy_helm_threshold = 10.0 // old = 2.0 ; we increased it for testing                             
+  tardy_nav_threshold  = 10.0 // old = 2.0 ; we increased it for testing    
+ 
+  VERBOSE        = true
+  DEPTH_CONTROL  = true
+  ACTIVE_START   = true
+  SPD_PID_ACTIVE = false
+  
+  // Yaw PID controller
+  YAW_PID_KP               = 2.0
+  YAW_PID_KD               = 1.0
+  YAW_PID_KI               = 0.0
+  YAW_PID_INTEGRAL_LIMIT   = 0.0
+  
+  // Speed PID controller
+  SPEED_PID_KP             = 1.0
+  SPEED_PID_KD             = 0.0
+  SPEED_PID_KI             = 0.0
+  SPEED_PID_INTEGRAL_LIMIT = 0.07
+  
+  // Pitch PID controller
+  PITCH_PID_KP                   = 2.0
+  PITCH_PID_KD                   = 1.0
+  PITCH_PID_KI                   = 0.0
+  PITCH_PID_INTEGRAL_LIMIT       = 0.0
+
+  //ZPID controller
+  Z_TO_PITCH_PID_KP              = 7.2
+  Z_TO_PITCH_PID_KD              = 60.0
+  Z_TO_PITCH_PID_KI              = 0.24
+  Z_TO_PITCH_PID_INTEGRAL_LIMIT  = 3.0
+
+  // Mapping for speed control
+  DRAG_MAP = 0.0:0.0, 0.1:0.26, 0.2:1.05, 0.3:2.37, 0.4:4.21, 0.5:6.58, 0.6:9.47, 0.7:12.89, 0.8:16.84, 0.9:21.31, 1.0:26.31
+  
+  // Maximum heading error that allows propulsion
+  HEADING_LIMIT = 10.0        // degrees
+
+  // Maximums
+  MAX_PITCH     = 20.0        // degrees
+  MAX_SPEED     = 1.0         // m/s
+  MAX_SURGE_THRUST    = 100
+  MAX_HEADING_THRUST  = 100
+  MAX_PITCH_THRUST    = 100
+}
+
+ProcessConfig = uSimConsumption_CGG
+{
+  AppTick   = 4
+  CommsTick = 4
+  
+  EFFICIENCY_PROP       = 0.58
+  EFFICIENCY_SHAFT      = 0.7
+  EFFICIENCY_GEAR       = 0.9
+  EFFICIENCY_MOTOR      = 0.8
+  POWER_NOMINAL         = 1.5                       // W
+  CONSUMPTION_PER_PING  = 2.4                       // W.s .. 24W during 100ms
+  POWER_SPEED           = power=90.0,speed=1.0      // newtons,m/s .. to use with uSimMarine
+  ENERGY_PACK           = 520.0                     // WH
+  DECAYING_SPEED_RATIO  = true			    // true|false
+}
+
+//----------------------------------------------------
+// pHelmIvP Configuration Block  (Created from Plugin)
+
+ProcessConfig = pHelmIvP
+{
+  AppTick    = 4
+  CommsTick  = 4
+
+  ok_skew      = any
+
+  bhv_dir_not_found_ok = true
+  ivp_behavior_dir = ../../../../lib
+  
+  Behaviors    = targ_echo.bhv  
+  Verbose      = false
+  Domain       = course:0:359:360
+  Domain       = speed:0:5:26
+}
+
+//--------------------------------------------------------
+// pNodeReporter Configuration Block (Created from Plugin)
+
+ProcessConfig = pNodeReporter
+{
+  AppTick     = 2
+  CommsTick   = 2
+  
+  VESSEL_TYPE = AUV
+}
+
+//--------------------------------------------------------
+// uProcessWatch Configuration Block (Created from Plugin)
+
+ProcessConfig = uProcessWatch
+{
+  AppTick   = 4
+  CommsTick = 4
+
+  summary_wait = 5
+
+  nowatch   = uXMS*
+  nowatch   = uMAC*
+  nowatch   = uPokeDB*
+  nowatch   = uTermCommand*
+  watch_all = true
+}
+
+
+
+//---------------------------------------------------------
+// pShare Config Block  (Created from Plugin)
+
+ProcessConfig = pShare
+{
+  AppTick    = 2
+  CommsTick  = 2
+
+  input = route =  localhost:9305
+}
+
+
+//--------------------------------------------------
+// pHostInfo configuration block from plugin
+
+ProcessConfig = pHostInfo
+{
+  AppTick 	= 1
+  CommsTick 	= 1
+
+  DEFAULT_HOSTIP = localhost
+}
+
+
+//--------------------------------------------------
+// uFldNodeBroker configuration block from plugin
+
+ProcessConfig = uFldNodeBroker
+{
+  AppTick   = 1
+  CommsTick = 1
+
+  TRY_SHORE_HOST = pshare_route=localhost:9300
+
+  BRIDGE = src=VIEW_POLYGON
+  BRIDGE = src=VIEW_POINT
+  BRIDGE = src=VIEW_SEGLIST
+  BRIDGE = src=APPCAST
+  BRIDGE = src=NODE_REPORT_LOCAL,  alias=NODE_REPORT
+  BRIDGE = src=NODE_MESSAGE_LOCAL, alias=NODE_MESSAGE
+  BRIDGE = src=CRS_RANGE_REQUEST
+  BRIDGE = src=PING
+  BRIDGE = src=VIEW_RANGE_PULSE
+  BRIDGE = src=VIEW_CIRCLE
+  BRIDGE = src=VIEW_VECTOR
+}
+
+ProcessConfig = pAcommsHandler_CGG
+{
+    modem_id: 5 
+    common {
+        log: false
+        verbosity: QUIET show_gui: false
+    }
+    load_shared_library: "/home/rypkema/Workspace/moos-ivp-moossafir/lib/libmoossafir_protobuf.so"
+    translator_entry {
+        protobuf_name: "moossafir.Status"
+        trigger { type: TRIGGER_TIME
+            period: 5
+        }
+        create { technique: TECHNIQUE_FORMAT
+            moos_var: "VEHICLE_ID"
+            format: "%1%"
+        }
+        create { technique: TECHNIQUE_FORMAT
+            moos_var: "NAV_X"
+            format: "%10%"
+        }
+        create { technique: TECHNIQUE_FORMAT
+            moos_var: "NAV_Y"
+            format: "%11%"
+        }
+        create { technique: TECHNIQUE_FORMAT
+            moos_var: "NAV_SPEED"
+            format: "%12%"
+        }
+        create { technique: TECHNIQUE_FORMAT
+            moos_var: "NAV_HEADING"
+            format: "%13%"
+            algorithm { name: "angle_0_360"
+                primary_field: 13
+            }
+        }
+        create { technique: TECHNIQUE_FORMAT
+            moos_var: "NAV_DEPTH"
+            format: "%14%"
+        }
+        create { technique: TECHNIQUE_FORMAT
+            moos_var: "DRIFT_X"
+            format: "%15%"
+        }
+        create { technique: TECHNIQUE_FORMAT
+            moos_var: "DRIFT_Y"
+            format: "%16%"
+        }
+        create { technique: TECHNIQUE_FORMAT
+            moos_var: "CONSO_ALL"
+            format: "%17%"
+        }
+        publish {
+            technique: TECHNIQUE_PROTOBUF_TEXT_FORMAT
+            moos_var: "COMMS_STATUS_IN"
+        }
+    }
+    translator_entry {
+        protobuf_name: "moossafir.MiniStatus"
+        trigger { type: TRIGGER_TIME
+            period: 1
+        }
+        create { technique: TECHNIQUE_FORMAT
+            moos_var: "NAV_X_MOD30"
+            format: "%10%"
+        }
+        create { technique: TECHNIQUE_FORMAT
+            moos_var: "NAV_Y_MOD30"
+            format: "%11%"
+        }
+        publish {
+            technique: TECHNIQUE_PROTOBUF_TEXT_FORMAT
+            moos_var: "COMMS_MINI_STATUS_IN"
+        }
+    }
+    queue_cfg { 
+        message_entry { protobuf_name: "moossafir.Status"  
+            ack: false  
+            blackout_time: 10  
+            max_queue: 1
+            ttl: 1800
+            value_base: 1.5 
+            role { type: SOURCE_ID  field: "node" }
+        }
+        message_entry { protobuf_name: "moossafir.MiniStatus"  
+            ack: false
+            blackout_time: 1
+            max_queue: 1
+            ttl: 1800
+            value_base: 1.5 
+        }
+    }
+    mac_cfg {
+        type: MAC_FIXED_DECENTRALIZED
+        slot { src: 5  type: DATA  slot_seconds: 30 rate: 2 } // 0
+        slot { src: 5  type: DATA  slot_seconds: 30 rate: 0 } // 1
+        slot { src: 5  type: DATA  slot_seconds: 30 rate: 0 } // 2
+        slot { src: 5  type: DATA  slot_seconds: 30 rate: 0 } // 3
+        slot { src: 5  type: DATA  slot_seconds: 30 rate: 0 } // 4
+        slot { src: 5  type: DATA  slot_seconds: 30 rate: 1 } // 5
+        slot { src: 5  type: DATA  slot_seconds: 30 rate: 0 } // 6
+        slot { src: 5  type: DATA  slot_seconds: 30 rate: 0 } // 7
+        slot { src: 5  type: DATA  slot_seconds: 30 rate: 0 } // 8
+        slot { src: 5  type: DATA  slot_seconds: 30 rate: 0 } // 9
+        slot { src: 5  type: DATA  slot_seconds: 30 rate: 1 } // 10
+        slot { src: 5  type: DATA  slot_seconds: 30 rate: 0 } // 11
+        slot { src: 5  type: DATA  slot_seconds: 30 rate: 0 } // 12
+        slot { src: 5  type: DATA  slot_seconds: 30 rate: 0 } // 13 
+        slot { src: 5  type: DATA  slot_seconds: 30 rate: 0 } // 14
+    }
+    dccl_cfg { id_codec: "moossafir.id" }
+    driver_cfg 
+    {
+        driver_name: "moossafir.sim.driver"
+        [moossafir.Config.moos_server]: "localhost"  
+        [moossafir.Config.moos_port]: 9005
+        [moossafir.Config.rate_to_bytes]: 0
+        [moossafir.Config.rate_to_bytes]: 2
+        [moossafir.Config.rate_to_bytes]: 13
+    }
+}
+
+
+

@@ -1,0 +1,103 @@
+//--------    FILE: bravo.bhv   -------------
+
+initialize   DEPLOY = false
+initialize   RETURN = false
+initialize   LOITER_REGION = left
+
+//----------------------------------------------
+Behavior = BHV_Waypoint
+{ 
+  name      = waypt_loiter
+  pwt       = 100
+  condition = LOITER_REGION = left
+  condition = RETURN = false
+  condition = DEPLOY = true
+  endflag   = LOITER_REGION = right
+  UPDATES   = WPT_UPDATE
+  perpetual = true
+
+           speed = 2.5   // meters per second
+          points = 0,-100
+  capture_radius = 2.0
+     slip_radius = 8.0
+}
+
+Behavior = BHV_ConstantDepth
+{ 
+  name      = const_depth
+  pwt       = 100
+  condition = LOITER_REGION = left
+  condition = RETURN = false
+  condition = DEPLOY = true
+  endflag   = LOITER_REGION = right
+  perpetual = true
+  duration  = no-time-limit
+
+  depth = 50
+}
+
+//----------------------------------------------
+Behavior = BHV_Waypoint
+{
+//  name      = waypt_loiter_2 //DOESN'T WORK!!! - CANNOT USE A NAME THAT BEGINS WITH ANOTHER BEHAVIOUR NAME!!! 
+  name      = second_waypt_loiter
+  pwt       = 100
+  condition = LOITER_REGION = right
+  condition = RETURN = false
+  condition = DEPLOY = true
+  endflag   = LOITER_REGION = left
+  perpetual = true
+
+           speed = 2.5   // meters per second
+          points = 0,0
+  capture_radius = 2.0
+     slip_radius = 8.0
+}
+
+Behavior = BHV_ConstantDepth
+{ 
+  name      = second_const_depth
+  pwt       = 100
+  condition = LOITER_REGION = right
+  condition = RETURN = false
+  condition = DEPLOY = true
+  endflag   = LOITER_REGION = left
+  perpetual = true
+  duration  = no-time-limit
+
+  depth = 50
+}
+
+//----------------------------------------------
+Behavior=BHV_Waypoint
+{
+  name       = waypt_return
+  pwt        = 100
+  condition  = RETURN = true
+  condition  = DEPLOY = true
+  perpetual  = true
+  endflag    = RETURN = false
+  endflag    = DEPLOY = false
+  endflag    = MISSION = complete
+  updates    = RETURN_UPDATES
+
+           speed = 0.257
+  capture_radius = 2.0
+     slip_radius = 8.0
+          points = 0,-100
+}
+
+Behavior = BHV_ConstantDepth
+{ 
+  name      = return_const_depth
+  pwt       = 100
+  condition = RETURN = true
+  condition = DEPLOY = true
+  endflag   = RETURN = false
+  endflag   = DEPLOY = false
+  endflag   = MISSION = complete
+  perpetual = true
+  duration  = no-time-limit
+
+  depth = 0
+}

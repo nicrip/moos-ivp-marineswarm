@@ -1,0 +1,18 @@
+// -----------------------------------------------
+//       ABSTRACT BEHAVIOR CONFIGURATION FILE
+// -----------------------------------------------
+
+Behavior = ??
+{
+  // BHV_DriftingForces parameters:
+    capture_force = 3                                   // N double
+    slip_force = 15                                     // N double
+    drifting_force = 30                                 // N double
+    max_force = 100					// N double
+    speed = 1.0                                         // m/s double
+    display_force_sources = true                        // true|false bool
+    display_total_force = true                          // true|false bool
+    display_partial_forces = true                       // true|false bool
+    display_statistics = true                           // true|false bool
+    display_drift = true                                // true|false bool
+}

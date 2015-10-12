@@ -1,0 +1,3 @@
+#!/bin/bash
+
+PACOMMSHANDLER_PLUGINS=@CMAKE_SOURCE_DIR@/lib/libmoossafir_protobuf.so exec pAcommsHandler $@

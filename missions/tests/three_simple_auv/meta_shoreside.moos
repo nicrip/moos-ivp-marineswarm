@@ -1,0 +1,63 @@
+// -----------------------------------------------
+//           SHORESIDE CONFIGURATION FILE         
+// -----------------------------------------------
+
+  ServerHost = localhost
+  ServerPort = $(SPORT)
+  Community  = $(SNAME)
+  #include plug_origin_warp.moos
+
+Processconfig = ANTLER
+{
+  MSBetweenLaunches = 100
+  TestOpt = $(TESTS_ACTIVATION)
+  // possible values for 'NewConsole' : $(DISPLAY_WHEN_TESTED) / $(ALWAYS_DISPLAY) / $(NEVER_DISPLAY)
+  
+  // MOOS connections
+    Run = MOOSDB                    @ ExtraProcessParams=TestOpt, NewConsole = $(NEVER_DISPLAY)
+    Run = pShare                    @ ExtraProcessParams=TestOpt, NewConsole = $(NEVER_DISPLAY)
+    Run = pHostInfo                 @ ExtraProcessParams=TestOpt, NewConsole = $(NEVER_DISPLAY)
+    Run = uFldShoreBroker           @ ExtraProcessParams=TestOpt, NewConsole = $(NEVER_DISPLAY)
+    
+  // Communication simulator
+    Run = uFldPingManager_CGG       @ ExtraProcessParams=TestOpt, NewConsole = $(DISPLAY_WHEN_TESTED)
+    
+  // Motion control
+    // -
+  
+  // Physical model
+    // -
+    
+  // Current simulator
+    Run = uSimCurrent_CGG           @ ExtraProcessParams=TestOpt, NewConsole = $(NEVER_DISPLAY)
+    
+  // Energy calculator
+    // -
+    
+  // HCI (viewers)
+    Run = pMarineViewer             @ ExtraProcessParams=TestOpt, NewConsole = $(NEVER_DISPLAY)
+    Run = uProcessWatch             @ ExtraProcessParams=TestOpt, NewConsole = $(NEVER_DISPLAY)
+}
+
+#include plug_pShare_shoreside.moos
+#include plug_pHostInfo_shoreside.moos
+#include plug_uFldShoreBroker.moos
+#include plug_uFldPingManager_CGG.moos
+#include plug_uSimCurrent_CGG.moos
+#include plug_pMarineViewer.moos
+#include plug_uXMS.moos
+
+ProcessConfig = uProcessWatch                                   
+{                                                               
+  AppTick   = 1
+  CommsTick = 1
+  
+  WATCH  = uSimCurrent_CGG
+  WATCH  = uFldPingManager_CGG
+
+  ALLOW_RETRACTIONS = true
+  WATCH_ALL = true      // default is true
+  NOWATCH = uXMS*
+  NOWATCH = uPokeDB*
+  SUMMARY_WAIT = 12
+}

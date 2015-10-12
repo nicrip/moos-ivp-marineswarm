@@ -1,0 +1,22 @@
+
+import "goby/moos/protobuf/goby_moos_app.proto";
+import "goby/common/protobuf/option_extensions.proto";
+
+message FldPingManagerConfig
+{
+  optional GobyMOOSAppConfig common = 1 [(goby.field).description="Configuration common to all Goby MOOS applications"]; // see goby_moos_app.proto
+
+  optional double mission_duration = 10 [default = 10]; // days
+  optional double sound_speed_min = 11 [default = 1480]; // m/s
+  optional double sound_speed_max = 12 [default = 1520]; // m/s
+  optional bool sound_speed_variation = 13 [default = true];
+  optional bool exponentially_decaying_detection = 14 [default = true];
+  optional bool display_ping_emission = 15 [default = false];
+  optional bool display_ping_reception = 16 [default = false];
+  optional bool rho_noised = 17 [default = false];
+  optional bool theta_noised = 18 [default = false];
+  optional bool phi_noised = 19 [default = false];
+  optional double rho_gaussian_sigma = 20 [default = 1.5]; // m
+  optional double theta_gaussian_sigma = 21 [default = 5]; // degrees
+  optional double phi_gaussian_sigma = 22 [default = 5]; // degrees
+}

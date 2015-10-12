@@ -1,0 +1,12 @@
+===============================================================
+uSimShot_CGG Example MOOS Configuration
+===============================================================
+
+ProcessConfig = uSimShot_CGG
+{
+  AppTick   = 1
+  CommsTick = 1
+  
+  NEXT_SHOOTER          = shooter2                  // string
+  TIME_BETWEEN_SHOTS    = 5                         // sec
+}

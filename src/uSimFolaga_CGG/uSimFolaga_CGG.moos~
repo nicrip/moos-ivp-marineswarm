@@ -1,0 +1,32 @@
+=============================================================== 
+uSimFolaga Example MOOS Configuration                           
+=============================================================== 
+                                                                
+ProcessConfig = uSimFolaga                                      
+{                                                               
+  AppTick   = 20                                                 
+  CommsTick = 20  
+  
+  PREFIX = NAV  
+  SIM_PAUSE = false                                            
+  
+  START_X = 0
+  START_Y = 0
+  START_HEADING = 0
+  START_SPEED = 0
+  START_DEPTH = 0
+  
+  DRIFT_X = 0
+  DRIFT_Y = 0
+  DRIFT_Z = 0
+  
+  MASS             = 31     // Folaga without payload
+  DRAG_AT_XSPEED   = 15.6   // newtons // Peperoni at 4 knots = 2 m/s
+  XSPEED           = 2      // m/s
+  MAX_SPEED        = 1      // m/s
+  MAX_ROTATE_SPEED = 18     // degrees/sec
+  MAX_PITCH        = 45     // degrees
+  
+  DEFAULT_WATER_DEPTH = 0   // means we do not know anything about the water depth
+              
+}                                                               

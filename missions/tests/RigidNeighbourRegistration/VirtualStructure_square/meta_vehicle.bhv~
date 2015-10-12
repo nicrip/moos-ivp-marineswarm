@@ -1,0 +1,55 @@
+//-----------------------------------------------
+// Helm Behavior file 
+
+initialize   DEPLOY = false
+initialize   RETURN = false
+
+//----------------------------------------------
+Behavior = BHV_VirtualStructure_MapPingFormation
+{
+    name = bhv_virtualstructure
+    condition = RETURN = false
+    condition = DEPLOY = true
+    endflag   = RETURN = true
+    priority  = 100
+
+  // Formation_Behavior parameters:
+      int_radius = 10                          // m
+      ext_radius = 30                          // m
+      max_speed = 1.0                            // m/s
+      display_targetpoints = true                         // true|false
+      display_radii = true                                // true|false
+      display_statistics = true                           // true|false
+      decaying_speed_ratio = false      // true|false
+      filter_size_targetpoints = 3 // int
+      
+    // ContactsPing_Formation parameters:
+      ping_expiration_delay = 30.0    // s
+      display_contact_position_supposed = false           // true|false
+      display_filtered_contact_position_supposed = false  // true|false
+
+    // Map_PingFormation parameters:
+      add_swarm_element=name=alpha,x=0,y=0
+      add_swarm_element=name=bravo,x=0,y=300
+      add_swarm_element=name=charlie,x=300,y=300
+      add_swarm_element=name=delta,x=0,y=300
+}
+
+//----------------------------------------------
+Behavior=BHV_Waypoint
+{
+  name       = waypt_return
+  pwt        = 100
+  condition  = RETURN = true
+  condition  = DEPLOY = true
+  perpetual  = true
+  endflag    = RETURN = false
+  endflag    = DEPLOY = false
+  endflag    = MISSION = complete
+  updates    = RETURN_UPDATES
+
+           speed = 2.0
+  capture_radius = 2.0
+     slip_radius = 8.0
+          points = 0,0
+}

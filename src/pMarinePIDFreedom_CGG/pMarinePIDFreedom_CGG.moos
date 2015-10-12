@@ -1,0 +1,51 @@
+=============================================================== 
+pMarinePIDFreedom_CGG Example MOOS Configuration                           
+=============================================================== 
+                                                                
+ProcessConfig = pMarinePIDFreedom_CGG                                  
+{                                                               
+  AppTick   = 20          // Default MOOS AppTick=4          
+  CommsTick = 20          // Default MOOS CommsTick=4        
+ 
+  tardy_helm_threshold = 1000.0 // old = 2.0 ; we increased it for testing                             
+  tardy_nav_threshold  = 1000.0 // old = 2.0 ; we increased it for testing    
+ 
+  VERBOSE       = true
+  DEPTH_CONTROL = true
+  ACTIVE_START  = true
+  USE_SPEED_PID = false
+  
+  // Yaw PID controller
+  YAW_PID_KP               = 500
+  YAW_PID_KD               = 1000
+  YAW_PID_KI               = 0
+  YAW_PID_INTEGRAL_LIMIT   = 0
+    
+  // Speed PID controller
+  SPEED_PID_KP             = 80
+  SPEED_PID_KD             = 10
+  SPEED_PID_KI             = 11
+  SPEED_PID_INTEGRAL_LIMIT = 7.0
+  
+  // if we do not use Speed PID
+  MAX_THRUST_FORCE         = 7.0  // has to correspond to MAX_THRUST_FORCE in uSimMarineFreedom !
+  DRAG_COEF                = 1.62 // has to correspond to Xuu in uSimMarineFreedom !
+  
+  //Pitch PID controller
+  PITCH_PID_KP                   = 500
+  PITCH_PID_KD                   = 1000
+  PITCH_PID_KI                   = 0
+  PITCH_PID_INTEGRAL_LIMIT       = 0
+
+  //ZPID controller
+  Z_TO_PITCH_PID_KP              = 0.12	
+  Z_TO_PITCH_PID_KD              = 1.0	
+  Z_TO_PITCH_PID_KI              = 0.004
+  Z_TO_PITCH_PID_INTEGRAL_LIMIT  = 0.05
+
+  // Maximums
+  MAXPITCH     	= 20 // degrees
+  MAXELEVATOR  	= 100
+  MAXRUDDER  	= 100
+  MAXTHRUST  	= 100                                  
+}       

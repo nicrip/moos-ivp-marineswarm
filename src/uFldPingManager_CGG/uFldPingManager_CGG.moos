@@ -1,0 +1,32 @@
+===============================================================
+uFldPingManager Example MOOS Configuration
+===============================================================
+
+ProcessConfig = uFldPingManager_CGG
+{
+  AppTick   = 5
+  CommsTick = 5
+  
+  IterateMode = 2
+  //    0 = REGULAR_ITERATE_AND_MAIL 
+  //    1 = COMMS_DRIVEN_ITERATE_AND_MAIL 
+  //    2 = REGULAR_ITERATE_AND_COMMS_DRIVEN_MAIL
+  
+  MISSION_DURATION      = 10.0                      // days
+  
+  SOUND_SPEED_MIN       = 1480.0                    // m/s
+  SOUND_SPEED_MAX       = 1520.0                    // m/s
+  SOUND_SPEED_VARIATION = true                      // true|false
+  
+  EXPONENTIALLY_DECAYING_DETECTION = true           // true|false
+  
+  RHO_NOISED            = true                      // true|false
+  RHO_GAUSSIAN_SIGMA    = 1.5                       // m
+  THETA_NOISED          = true                      // true|false
+  THETA_GAUSSIAN_SIGMA  = 5.0                       // degrees
+  PHI_NOISED            = true                      // true|false
+  PHI_GAUSSIAN_SIGMA    = 5.0                       // degrees
+  
+  DISPLAY_PING_EMISSION = false                     // true|false
+  DISPLAY_PING_RECEPTION = true                     // true|false
+}

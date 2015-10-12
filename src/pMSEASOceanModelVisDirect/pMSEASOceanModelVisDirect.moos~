@@ -1,0 +1,67 @@
+MOOSTimeWarp = 1
+LatOrigin  = 27.380000	
+LongOrigin = 35.450000
+
+//------------------------------------------------
+// pMSEASOceanModelVisDirect config block
+
+ProcessConfig = pMSEASOceanModelVisDirect
+{
+   AppTick   = 4
+   CommsTick = 4
+
+   OCTAVE_PATH = /home/rypkema/Workspace/moos-ivp-moossafir/src/iMSEASOceanModelDirect
+   MSEAS_FILEPATH = /home/rypkema/Workspace/moos-ivp-moossafir/mseas_data/MIT_redsea_uvw_geo_201412010000_201412011200.nc
+   MSEAS_VARNAMES = u,v
+   MSEAS_TIME_OFFSET = 0.0
+   MODEL_TIME_WARP = 1.0
+   
+   GRID_X               = 0
+   GRID_Y               = 0
+   GRID_DEPTH           = 100
+   GRID_NUM_X 		= 30
+   GRID_NUM_Y 		= 30
+   GRID_DELTA_X 	= 100.0
+   GRID_DELTA_Y 	= -100.0
+   GRID_MIN_VALUE	= 10.0
+   GRID_MAX_VALUE	= 20.0
+   GRID_COLOR_VAR	= u
+   VECTOR_SCALE		= 1.0
+   VECTOR_POWER		= 2.0
+}
+
+
+//------------------------------------------------
+// pMarineViewer config block
+
+ProcessConfig = pMarineViewer
+{
+  AppTick    = 4
+  CommsTick  = 4
+
+  TIFF_FILE            = AerialMIT.tif
+  set_pan_x            = -30
+  set_pan_y            = 60
+  zoom                 = 2.3
+  vehicles_shape_scale = 1.5
+  vehicles_name_mode   = names+shortmode
+  marker_viewable_labels = false
+
+  appcast_width = 30
+
+  appcast_viewable     = true
+  appcast_color_scheme = indigo
+
+  SCOPE = HAZARDSET_REPORT
+
+  //ACTION = STATION_ALL = true
+
+  button_one   = DEPLOY_ALL  # DEPLOY_ALL=true 
+  button_one   = MOOS_MANUAL_OVERIDE_ALL=false 
+  button_one   = RETURN_ALL=false
+  button_one   = FRONT_SURVEY=true
+  button_two   = RETURN_ALL  # RETURN_ALL=true
+
+  button_three = ALLSTOP  # DEPLOY_ALL=false
+  button_four  = SHOW:both   # FGR_SHOW=both
+}

@@ -1,0 +1,9 @@
+//------------------------------------------------
+// pSimulateNodeLoss config block
+
+ProcessConfig = pSimulateNodeLoss
+{
+   AppTick   = 4
+   CommsTick = 4
+}
+

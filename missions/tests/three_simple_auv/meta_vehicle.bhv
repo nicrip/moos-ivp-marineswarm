@@ -1,0 +1,174 @@
+// -----------------------------------------------
+//           BEHAVIOR CONFIGURATION FILE          
+// -----------------------------------------------
+
+initialize   DEPLOY  = $(DEPLOY_VEHICLE)
+initialize   RETURN  = false
+initialize   RECORD  = false
+initialize   SURVEY  = true
+
+set MODE = ACTIVE
+{
+  DEPLOY  = true
+} INACTIVE
+
+set MODE = SURVEYING
+{
+  MODE    = ACTIVE
+  SURVEY  = true
+}
+
+set MODE = RECORDING
+{
+  MODE    = ACTIVE:SURVEYING
+  RECORD  = true
+} REPOSITIONING
+
+set MODE = RETURNING
+{ 
+  MODE    = ACTIVE
+  RETURN  = true
+}
+    
+Behavior = BHV_TrailiSBL_PingFormation
+{
+  name = bhv_pos_wn
+  priority = 150
+
+  int_radius = 20
+  ext_radius = 30
+  display_targetpoints = true
+  display_radii = true
+  display_statistics = true
+  filter_size_targetpoints = 6
+  filter_size_spherical_coordinates = 40
+  
+  contact_name = mike
+  
+  #ifdef VNAME alpha
+    trail_dx = 600
+    trail_dy = -600
+  #endif
+  
+  #ifdef VNAME bravo
+    trail_dx = 300
+    trail_dy = -600
+  #endif
+  
+  #ifdef VNAME charlie
+    trail_dx = 0
+    trail_dy = -600
+  #endif
+  
+  #ifdef VNAME delta
+    trail_dx = -300
+    trail_dy = -600
+  #endif
+  
+  #ifdef VNAME echo
+    trail_dx = -600
+    trail_dy = -600
+  #endif
+  
+  #ifdef VNAME foxtrot
+    trail_dx = 600
+    trail_dy = -300
+  #endif
+  
+  #ifdef VNAME golf
+    trail_dx = 300
+    trail_dy = -300
+  #endif
+  
+  #ifdef VNAME hotel
+    trail_dx = 0
+    trail_dy = -300
+  #endif
+  
+  #ifdef VNAME india
+    trail_dx = -300
+    trail_dy = -300
+  #endif
+  
+  #ifdef VNAME juliett
+    trail_dx = -600
+    trail_dy = -300
+  #endif
+  
+  #ifdef VNAME kilo
+    trail_dx = 600
+    trail_dy = 0
+  #endif
+  
+  #ifdef VNAME lima
+    trail_dx = 300
+    trail_dy = 0
+  #endif
+  
+  #ifdef VNAME mike
+    trail_dx = 0
+    trail_dy = 0
+  #endif
+  
+  #ifdef VNAME november
+    trail_dx = -300
+    trail_dy = 0
+  #endif
+  
+  #ifdef VNAME oscar
+    trail_dx = -600
+    trail_dy = 0
+  #endif
+  
+  #ifdef VNAME papa
+    trail_dx = 600
+    trail_dy = 300
+  #endif
+  
+  #ifdef VNAME quebec
+    trail_dx = 300
+    trail_dy = 300
+  #endif
+  
+  #ifdef VNAME romeo
+    trail_dx = 0
+    trail_dy = 300
+  #endif
+  
+  #ifdef VNAME sierra
+    trail_dx = -300
+    trail_dy = 300
+  #endif
+  
+  #ifdef VNAME tango
+    trail_dx = -600
+    trail_dy = 300
+  #endif
+  
+  #ifdef VNAME uniform
+    trail_dx = 600
+    trail_dy = 600
+  #endif
+  
+  #ifdef VNAME victor
+    trail_dx = 300
+    trail_dy = 600
+  #endif
+  
+  #ifdef VNAME whiskey
+    trail_dx = 0
+    trail_dy = 600
+  #endif
+  
+  #ifdef VNAME xray
+    trail_dx = -300
+    trail_dy = 600
+  #endif
+  
+  #ifdef VNAME yankee
+    trail_dx = -600
+    trail_dy = 600
+  #endif
+  
+  condition = MODE == REPOSITIONING
+}

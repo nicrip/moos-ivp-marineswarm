@@ -1,0 +1,119 @@
+===============================================================
+uSimCurrent_CGG Example MOOS Configuration
+===============================================================
+
+ProcessConfig = uSimCurrent_CGG
+{
+  AppTick   = 1
+  CommsTick = 1
+  
+  // Viewer parameters
+  DISPLAY_VIEWER = true                             // true|false
+  WINDOW_SIZE = 800                                 // px
+  AREA_SIZE = 2000.0                                // m
+  ARROW_GAP = 30                                    // px
+  CAPTURE_TIME = 0                                  // sec
+  DISPLAY_BACKGROUND = true                         // true|false
+  OPERATION_DEPTH = 200.0                           // m
+  LOW_DISPLAY_MODE = false                          // true|false
+  AUTO_FOCUS_ON_NODES = true                        // true|false
+  
+  // Constant current
+  ADD_CURRENT_MODEL = constant                      // string (current model)
+  CURRENT_NAME = global                             // string
+  ACTIVE = false                                    // true|false
+    CONSTANT__DRIFT_X = 0.1                         // m/s
+    CONSTANT__DRIFT_Y = 0.0                         // m/s
+    CONSTANT__DRIFT_Z = 0.0                         // m/s
+  
+  // Random current
+  ADD_CURRENT_MODEL = random                        // string (current model)
+  CURRENT_NAME = large_scale                        // string
+  ACTIVE = false                                    // true|false
+    RANDOM__SOURCE_GAP = 300.                       // m
+    RANDOM__SOURCE_PERIOD = 100                     // int
+    // (grid size becomes RANDOM__SOURCE_PERIOD x RANDOM__SOURCE_GAP)
+    RANDOM__MAX_SPEED = 0.05                        // m/s
+  
+  // Random current
+  ADD_CURRENT_MODEL = random                        // string (current model)
+  CURRENT_NAME = small_scale                        // string
+  ACTIVE = false                                    // true|false
+    RANDOM__SOURCE_GAP = 30.                        // m
+    RANDOM__SOURCE_PERIOD = 1000                    // int
+    // (grid size becomes RANDOM__SOURCE_PERIOD x RANDOM__SOURCE_GAP)
+    RANDOM__MAX_SPEED = 0.01                        // m/s
+  
+  // Langmuir current
+  ADD_CURRENT_MODEL = langmuir                      // string (current model)
+  CURRENT_NAME = langmuir_1                         // string
+  ACTIVE = false                                    // true|false
+    LANGMUIR__RANGE = 10000.0                       // m
+    LANGMUIR__CELL_LENGTH = 150.0                   // m
+    LANGMUIR__MAX_SPEED = 0.02                      // m/s
+    LANGMUIR__WIND_DIRECTION = -45.0                // degrees
+    LANGMUIR__PERC_10 = 1.0                         // 
+  
+  // Soliton current
+  ADD_CURRENT_MODEL = soliton                       // string (current model)
+  CURRENT_NAME = soliton_1                          // string
+  ACTIVE = false                                    // true|false
+    SOLITON__FIRST_FRONT_AT_ZERO = 600.0            // sec
+    SOLITON__TIDE_DIRECTION = 70.0                  // degrees
+    SOLITON__MAX_HORIZONTAL_SPEED = 0.8             // m/s
+    SOLITON__MAX_VERTICAL_AMPLITUDE = 30.0          // m
+    SOLITON__NUMBER_OF_WAVES = 4                    // int
+  
+  // Shear current
+  ADD_CURRENT_MODEL = shear                         // string (current model)
+  CURRENT_NAME = shear_1                            // string
+  ACTIVE = false                                    // true|false
+    SHEAR__GAP = 500.0                              // m
+    SHEAR__THETA = 60.0                             // degrees
+    SHEAR__MAX_SPEED = 0.02                         // m/s
+    
+  // Grid current
+  ADD_CURRENT_MODEL = grid
+  CURRENT_NAME = CurrentBrazil
+  ACTIVE = true
+    GRID__SOURCE_GAP = 50000.						// m
+    GRID__SOURCE_PERIOD = 12 
+    GRID__SOURCE_POINT = 0,0,0.12,-170
+    GRID__SOURCE_POINT = 0,1,0.14,-160
+    GRID__SOURCE_POINT = 0,2,0.14,-120
+    GRID__SOURCE_POINT = 1,0,0.14,-180
+    GRID__SOURCE_POINT = 1,1,0.16,-135
+  
+  // Vortex current
+  ADD_CURRENT_MODEL = vortex
+  CURRENT_NAME = vortex
+  ACTIVE = false
+    VORTEX__POS_X = 0.								// m
+    VORTEX__POS_Y = 0.								// m
+    VORTEX__MAGNITUDE = 0.2							// m/s
+    VORTEX__RADIUS = 500. 							// m
+    
+  // Spectral current
+  ADD_CURRENT_MODEL = spectral
+  CURRENT_NAME = Spectral_10
+  ACTIVE = false
+    SPECTRAL__WAVENUMBER = 1.05 					// cycles/km
+    SPECTRAL__SSH_AMPLITUDE = 0.0282 				// cm
+    SPECTRAL__CORIOLIS_PARAMETER = 0.000126 		// s
+    SPECTRAL__GRAVITY_CONSTANT = 9.81 				// s
+    
+  // Spectral current
+  ADD_CURRENT_MODEL = multi_spectral
+  CURRENT_NAME = Worst_extended
+  ACTIVE = false
+  SPECTRAL__CORIOLIS_PARAMETER = 0.000126 			// s
+  SPECTRAL__GRAVITY_CONSTANT = 9.81 				// s
+    // Couple values: wavenumber (cycles/km), shh_amplitude (cm)
+    ADD_SPECTRAL_CURRENT = 0.0300 , 03.041372
+    ADD_SPECTRAL_CURRENT = 0.0750 , 00.552888
+    ADD_SPECTRAL_CURRENT = 0.1250 , 00.263150
+    ADD_SPECTRAL_CURRENT = 0.1750 , 00.170369
+    ADD_SPECTRAL_CURRENT = 0.2250 , 00.124738
+    ADD_SPECTRAL_CURRENT = 0.2750 , 00.097703
+    ADD_SPECTRAL_CURRENT = 0.3250 , 00.079890
+}

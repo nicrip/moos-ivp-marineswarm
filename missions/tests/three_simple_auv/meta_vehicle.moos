@@ -1,0 +1,74 @@
+// -----------------------------------------------
+//            VEHICLE CONFIGURATION FILE          
+// -----------------------------------------------
+
+  ServerHost = localhost
+  ServerPort = $(VPORT)
+  Simulator  = true
+  Community  = $(VNAME) // Community name IS the vehicle name
+  #include plug_origin_warp.moos
+
+Processconfig = ANTLER
+{
+  MSBetweenLaunches = 100
+  TestOpt = $(TESTS_ACTIVATION)
+  # possible values for 'NewConsole' : $(DISPLAY_WHEN_TESTED) / $(ALWAYS_DISPLAY) / $(NEVER_DISPLAY)
+
+  // MOOS connections
+    Run = MOOSDB                  @ ExtraProcessParams=TestOpt, NewConsole = $(NEVER_DISPLAY)
+    Run = pNodeReporter           @ ExtraProcessParams=TestOpt, NewConsole = $(NEVER_DISPLAY)
+    Run = pHostInfo               @ ExtraProcessParams=TestOpt, NewConsole = $(NEVER_DISPLAY)
+    Run = pShare                  @ ExtraProcessParams=TestOpt, NewConsole = $(NEVER_DISPLAY)
+    Run = uFldNodeBroker          @ ExtraProcessParams=TestOpt, NewConsole = $(NEVER_DISPLAY)
+  
+  // Communication simulator
+    Run = uTimerScript            @ ExtraProcessParams=TestOpt, NewConsole = $(NEVER_DISPLAY) ~ uTimerScriptPing
+  
+  // Motion control
+    Run = pMarinePID              @ ExtraProcessParams=TestOpt, NewConsole = $(NEVER_DISPLAY)
+    Run = pHelmIvP                @ ExtraProcessParams=TestOpt, NewConsole = $(NEVER_DISPLAY)
+  
+  // Physical model
+    Run = uSimMarine              @ ExtraProcessParams=TestOpt, NewConsole = $(NEVER_DISPLAY)
+  
+  // Current simulator
+    // -
+  
+  // Energy calculator
+    //Run = pLogger               @ ExtraProcessParams=TestOpt, NewConsole = $(NEVER_DISPLAY)
+    Run = uSimConsumption_CGG     @ ExtraProcessParams=TestOpt, NewConsole = $(NEVER_DISPLAY)
+  
+  // HCI (viewers)
+    Run = uProcessWatch             @ ExtraProcessParams=TestOpt, NewConsole = $(NEVER_DISPLAY)
+}
+
+#include plug_pNodeReporter.moos
+#include plug_pHostInfo_vehicle.moos
+#include plug_pShare_vehicle.moos
+#include plug_uFldNodeBroker.moos
+#include plug_uTimerScriptPing.moos
+#include plug_pMarinePID.moos
+#include plug_pMarinePID2.moos
+#include plug_pHelmIvP.moos
+#include plug_uSimMarine.moos
+#include plug_uSimMarine2.moos
+#include plug_pLogger.moos
+#include plug_uSimConsumption_CGG.moos
+#include plug_uXMS.moos
+
+ProcessConfig = uProcessWatch                                   
+{                                                               
+  AppTick   = 1
+  CommsTick = 1
+  
+  WATCH  = pMarinePID
+  WATCH  = pHelmIvP
+  WATCH  = uSimMarine
+  WATCH  = uSimConsumption_CGG
+
+  ALLOW_RETRACTIONS = true
+  WATCH_ALL = true      // default is true
+  NOWATCH = uXMS*
+  NOWATCH = uPokeDB*
+  SUMMARY_WAIT = 12
+}

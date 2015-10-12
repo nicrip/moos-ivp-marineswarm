@@ -1,0 +1,9 @@
+//------------------------------------------------
+// pTrailViewer config block
+
+ProcessConfig = pTrailViewer
+{
+   AppTick   = 4
+   CommsTick = 4
+}
+

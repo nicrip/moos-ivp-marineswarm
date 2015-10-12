@@ -1,0 +1,20 @@
+#--------------------------------------------------------
+# The CMakeLists.txt for:       lib_IncrementalConvexHull
+# Author(s):                                 Nick Rypkema
+#--------------------------------------------------------
+
+SET(SRC
+  hungarian.c
+)
+
+SET(HEADERS 
+  hungarian.h
+) 
+
+ADD_LIBRARY(Hungarian ${SRC})
+
+TARGET_LINK_LIBRARIES(Hungarian
+   mbutil
+   behaviors
+   geometry
+   )

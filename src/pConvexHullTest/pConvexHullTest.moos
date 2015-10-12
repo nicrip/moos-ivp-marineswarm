@@ -1,0 +1,9 @@
+//------------------------------------------------
+// pConvexHullTest config block
+
+ProcessConfig = pConvexHullTest
+{
+   AppTick   = 4
+   CommsTick = 4
+}
+

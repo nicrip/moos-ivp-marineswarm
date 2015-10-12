@@ -1,0 +1,9 @@
+//------------------------------------------------
+// pThreeChannelCurrent config block
+
+ProcessConfig = pThreeChannelCurrent
+{
+   AppTick   = 4
+   CommsTick = 4
+}
+

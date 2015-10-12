@@ -1,0 +1,50 @@
+=============================================================== 
+uSimMarineSimple_CGG Example MOOS Configuration                           
+=============================================================== 
+                                                                
+ProcessConfig = uSimMarineSimple_CGG                                                                          
+{                                                               
+  AppTick   = 10                                                 
+  CommsTick = 10
+  
+  mass          = 35.7 // kg // for Peperoni AUV                                           
+                    
+  START_POS = $(START_POS), 180, 0
+  PREFIX    = NAV
+                                            
+  start_x       = 0                                             
+  start_y       = 0                                             
+  start_heading = 0                                             
+  start_speed   = 0                                             
+  start_depth   = 0                                             
+  start_pos     = $(START_POS), 180, 0
+                                                                
+  force_x       = 0                                             
+  force_y       = 0                                             
+  force_theta   = 0                                             
+  force_vector  = 0,0      // heading, magnitude   
+
+  DRIFT_X   = 0.0
+  DRIFT_Y   = 0.0
+  DRIFT_Z   = 0.0          
+                                                                
+  buoyancy_rate        = 0.025 // meters/sec                 
+  max_acceleration     = 0     // meters/sec^2               
+  max_deceleration     = 0.5   // meters/sec^2               
+  max_depth_rate       = 0.5   // meters/sec                 
+  max_depth_rate_speed = 2.0   // meters/sec  
+
+  max_thrust_force     = 15.6  // newtons (from Peperoni report, at 4 knots)               
+                                                                
+  sim_pause            = false // or {true}                  
+  dual_state           = false // or {true}                  
+  thrust_reflect       = false // or {true}                  
+  thrust_factor        = 20    // range [0,inf)
+  drag_factor          = 20                                 //added by Nathan              
+  turn_rate            = 70    // range [0,100]              
+
+  DRAG_MAP =  0:0, 0.5:0.93, 1:3.73, 1.5:8.40, 2:14.93, 2.5:23.33, 3:33.59, 3.5:45.72, 4:59.71, 4.5:75.58, 5:93.31   // for Peperoni AUV
+}
+
+
+}

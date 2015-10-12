@@ -1,0 +1,21 @@
+import "dccl/protobuf/option_extensions.proto";
+
+package moossafir;
+
+message MiniStatus { 
+  option (dccl.msg).id = 2000002;
+  option (dccl.msg).max_bytes = 2;
+  option (dccl.msg).codec_version = 3;
+  
+  // m
+  required double x_mod30 = 10 [(dccl.field).max=30,
+                                (dccl.field).min=-30,
+                                (dccl.field).precision=0,
+                                (dccl.field).in_head=true];
+  
+  // m
+  required double y_mod30 = 11 [(dccl.field).max=30,
+                                (dccl.field).min=-30,
+                                (dccl.field).precision=0,
+                                (dccl.field).in_head=true];
+}

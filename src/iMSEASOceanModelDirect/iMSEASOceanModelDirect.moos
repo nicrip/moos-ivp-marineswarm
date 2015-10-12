@@ -1,0 +1,18 @@
+MOOSTimeWarp = 60
+
+//------------------------------------------------
+// iMSEASOceanModelDirect config block
+
+ProcessConfig = iMSEASOceanModelDirect
+{
+   AppTick   = 4
+   CommsTick = 4
+
+   OCTAVE_PATH = /home/rypkema/Workspace/moos-ivp-moossafir/src/iMSEASOceanModelDirect
+   MSEAS_FILEPATH = /home/rypkema/Workspace/mseas_data/pe_out_vrot.nc
+   MSEAS_VARNAMES = u,v
+   MSEAS_TIME_OFFSET = 0.0
+   MODEL_TIME_WARP = 1.0
+   NODE_COMMUNITIES = node_0,node_1,node_2,node_3,node_4,node_5,node_6,node_7,node_8
+}
+

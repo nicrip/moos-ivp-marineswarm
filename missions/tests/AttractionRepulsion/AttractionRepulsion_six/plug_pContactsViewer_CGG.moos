@@ -1,0 +1,17 @@
+ProcessConfig = pContactsViewer_CGG
+{
+  AppTick   = 1
+  CommsTick = 1
+  
+  //square
+  //DISPLAY_CONTACTS_SEGMENT = alpha,bravo            // string,string
+  //DISPLAY_CONTACTS_SEGMENT = bravo,charlie          // string,string
+  //DISPLAY_CONTACTS_SEGMENT = charlie,delta          // string,string
+  //DISPLAY_CONTACTS_SEGMENT = delta,alpha            // string,string
+
+  //arrow
+  DISPLAY_CONTACTS_SEGMENT = alpha,bravo            // string,string
+  DISPLAY_CONTACTS_SEGMENT = bravo,delta          // string,string
+  DISPLAY_CONTACTS_SEGMENT = delta,charlie          // string,string
+  DISPLAY_CONTACTS_SEGMENT = charlie,alpha            // string,string
+}

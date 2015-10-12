@@ -1,0 +1,12 @@
+===============================================================
+pLogger_CGG Example MOOS Configuration
+===============================================================
+
+ProcessConfig = pLogger_CGG
+{
+  AppTick   = 1
+  CommsTick = 1
+  
+  ENABLE_LOGGING        = true                      // true|false
+  LOG_TIME_GAP          = 5.0                       // sec
+}
