@@ -20,9 +20,10 @@ SET(SRC
 ADD_EXECUTABLE(iMSEASOceanModelDirect ${SRC})
 
 TARGET_LINK_LIBRARIES(iMSEASOceanModelDirect
+   contacts
    ${Octave_LIBRARIES}
    ${MOOS_LIBRARIES}
+   geometry
    mbutil
    m
-   pthread
-   contacts)
+   pthread)
