@@ -37,6 +37,10 @@ And connect to the internet via WiFi. Finally, enter the following commands on y
     sudo iptables --table nat --append POSTROUTING --out-interface wlan0 -j MASQUERADE
     sudo iptables --append FORWARD --in-interface eth0 -j ACCEPT
     sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
+    
+Then restart networking on PABLO:
+
+    sudo service networking restart
 
 
 Required Libraries  
@@ -84,5 +88,22 @@ Issues when building goby on PABLO:
     you may need libgmp3-dev
     you may need to edit the boost header at /usr/include/boost/thread/xtime.hpp, replacing all instances of TIME_UTC with TIME_UTC_
     
+Armadillo  
+---------  
+Dependencies via aptitude:
+
+    sudo apt-get install libarpack++2-dev liblapack-dev libblas-dev libopenblas-base
+
+Possibly, install OpenBLAS following instructions at: http://www.openblas.net/
+
+Install Armadillo from source:
+
+    wget "http://sourceforge.net/projects/arma/files/armadillo-6.100.0.tar.gz"
+    tar -xvzf armadillo-6.100.0.tar.gz
+    cd armadillo-6.100.0.tar.gz
+    cmake .
+    sudo make install
+
+
 
   
