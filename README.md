@@ -94,7 +94,12 @@ Dependencies via aptitude:
 
     sudo apt-get install libarpack++2-dev liblapack-dev libblas-dev libopenblas-base
 
-Possibly, install OpenBLAS following instructions at: http://www.openblas.net/
+install OpenBLAS following instructions at: http://www.openblas.net/:
+
+    wget "http://github.com/xianyi/OpenBLAS/archive/v0.2.14.tar.gz"
+    tar -xvzf v0.2.14.tar.gz
+    cd OpenBLAS-0.2.14
+    make
 
 Install Armadillo from source:
 
@@ -104,6 +109,14 @@ Install Armadillo from source:
     cmake .
     sudo make install
 
+NLOpt  
+-----
+Install NLOpt from source:
 
+    wget "http://ab-initio.mit.edu/nlopt/nlopt-2.4.2.tar.gz"
+    tar -xvzf nlopt-2.4.2.tar.gz
+    cd nlopt-2.4.2.tar.gz
+    ./configure
+    sudo make install
 
   
