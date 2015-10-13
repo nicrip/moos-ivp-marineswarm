@@ -1,11 +1,12 @@
 # moos-ivp-marineswarm
+
 Repository for marine swarm applications (SM work) with moos-ivp - currently only formation control behaviours and associated infrastructure. See thesis at:
 
 https://drive.google.com/open?id=0B7C482m0cX0fSU5uVF9GVWlaYVE
 
 
-Setting up internet sharing to PABLO Boxes  
-==========================================  
+## Setting up internet sharing to PABLO Boxes  
+
 Using instructions originially from:  https://www.raspberrypi.org/forums/viewtopic.php?t=6997&p=87671  
 
 On the PABLO Box, make sure the /etc/network/interfaces file is set up as follows:  
@@ -46,11 +47,10 @@ Then restart networking on PABLO:
     sudo service networking restart
 
 
-Required Libraries  
-==================  
+##Required Libraries  
 
-Goby and Protobuf  
------------------  
+###Goby and Protobuf  
+
 Aptitude via - developer libraries:  
 
     sudo add-apt-repository ppa:dccl-dev/ppa
@@ -91,8 +91,8 @@ Issues when building goby on PABLO:
     you may need libgmp3-dev
     you may need to edit the boost header at /usr/include/boost/thread/xtime.hpp, replacing all instances of TIME_UTC with TIME_UTC_
     
-Armadillo  
----------  
+###Armadillo  
+ 
 Dependencies via aptitude:
 
     sudo apt-get install libarpack++2-dev liblapack-dev libblas-dev libopenblas-base
@@ -112,8 +112,8 @@ Install Armadillo from source:
     cmake .
     sudo make install
 
-NLOpt  
------
+###NLOpt  
+
 Install NLOpt from source: ISSUES!!!
 
     wget "http://ab-initio.mit.edu/nlopt/nlopt-2.4.2.tar.gz"
