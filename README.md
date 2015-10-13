@@ -44,7 +44,7 @@ Required Libraries
 
 Goby and Protobuf  
 -----------------  
-Developer libraries:  
+Aptitude via - developer libraries:  
 
     sudo add-apt-repository ppa:dccl-dev/ppa
     sudo add-apt-repository ppa:goby-dev/ppa
@@ -54,5 +54,35 @@ Developer libraries:
 Optional MOOS Applications (pAcommsHandler, etc):  
 
     sudo apt-get install goby2-moos
+
+OR source:
+
+    wget "https://launchpad.net/goby/2.1/2.1.1/+download/goby2-2.1.1.tar.gz"  
+    tar -xvzf goby2-2.1.1.tar.gz  
+
+then get dccl, and install:
+
+    bzr co lp:dccl/3.0 dccl3  
+    sudo apt-get install cmake libboost-dev libprotobuf-dev libprotoc-dev protobuf-compiler
+    cd dccl3
+    ./build.sh
+
+then build goby:  
+
+    cd goby; sudo ./DEPENDENCIES debian/ubuntu
+    sudo ./build.sh install
+    
+Issues when building goby on PABLO:
+
+    building goby with MOOS:  
+    cd goby/build
+    sudo cmake .. -DMOOS_DIR=/home/student/moos-ivp/MOOS/MOOSCore -Dbuild_moos=ON  
+    sudo make install  
+    
+    possible dependencies:
+    you may need libproj-dev and gdal-bin
+    you may need libgmp3-dev
+    you may need to edit the boost header at /usr/include/boost/thread/xtime.hpp, replacing all instances of TIME_UTC with TIME_UTC_
+    
 
   
