@@ -23,11 +23,6 @@ On the PABLO Box, make sure the /etc/network/interfaces file is set up as follow
       netmask 255.255.255.0  
       dns-nameservers 8.8.8.8 8.8.4.4  
 
-And make sure the /etc/resolv.conf file is set up as follows:
-
-    nameserver 10.42.0.1
-    nameserver 8.8.8.8
-
 On your laptop set up a static ethernet with the following properties:
 
     Method: Manual
@@ -45,7 +40,23 @@ And connect to the internet via WiFi. Finally, enter the following commands on y
 Then restart networking on PABLO:
 
     sudo service networking restart
+    
+When working with the Kingfisher you must reset on the PABLO box to:
 
+    auto lo  
+    
+    iface lo inet loopback  
+    iface eth0 inet dhcp  
+    
+    auto eth0:1  
+    iface eth0:1 inet static  
+      address 192.168.254.100  
+      netmask 255.255.255.0  
+      dns-nameservers 8.8.8.8 8.8.4.4  
+
+Then restart networking on PABLO:
+
+    sudo service networking restart
 
 ##Required Libraries  
 
