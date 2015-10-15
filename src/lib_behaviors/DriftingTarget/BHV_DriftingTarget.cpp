@@ -314,8 +314,8 @@ bool BHV_DriftingTarget::updateInfoIn()
 
   m_nav_depth = getBufferDoubleVal("NAV_DEPTH", ok1);
   if (!ok1) {
-    postEMessage("No NAV_DEPTH info in info_buffer.");
-    return(false);
+    //postWMessage("No NAV_DEPTH info in info_buffer.");
+    //return(false);
   }
 
   m_energy = getBufferDoubleVal("CONSO_ALL", ok1);

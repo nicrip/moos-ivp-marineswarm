@@ -1,0 +1,11 @@
+//--------------------------------------------------
+// pFormationQualityMetric Configuration Block (Created from Plugin)
+
+ProcessConfig = pFormationQualityMetric
+{
+  AppTick 	= 1
+  CommsTick 	= 1
+  
+  DISPLAY_RIGID_REGISTRATION = true
+  $(NODE_OFFSETS_METRIC_LIST)
+}

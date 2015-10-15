@@ -1,0 +1,13 @@
+//---------------------------------------------------------
+// pSimulateNodeLoss Config Block  (Created from Plugin)
+
+ProcessConfig = pSimulateNodeLoss
+{
+  AppTick    = 2
+  CommsTick  = 2
+
+  DELTA_TIME   		= 1200.0
+  NUM_NODES_LOSS        = 5
+  NUM_NODES       	= 20
+}
+

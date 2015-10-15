@@ -1,0 +1,13 @@
+//---------------------------------------------------------
+// pNodeLogger Config Block  (Created from Plugin)
+
+ProcessConfig = pNodeLogger
+{
+  AppTick    = 2
+  CommsTick  = 2
+
+  LOG_NODE   		= true
+  LOG_TIME_DELTA        = 5.0
+  LOG_FOLDER        	= ./node_logs/
+}
+

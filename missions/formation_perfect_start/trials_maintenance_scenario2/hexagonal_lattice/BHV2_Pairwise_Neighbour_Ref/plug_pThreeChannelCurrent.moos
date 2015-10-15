@@ -1,0 +1,8 @@
+//--------------------------------------------------------
+// pThreeCurrentChannel Configuration Block (Created from Plugin)
+
+ProcessConfig = pThreeCurrentChannel
+{
+  AppTick     = 2
+  CommsTick   = 2
+}

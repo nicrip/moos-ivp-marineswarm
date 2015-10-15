@@ -1,0 +1,33 @@
+ProcessConfig = uSimFolaga_CGG                                      
+{                                                               
+  AppTick   = 20                                                 
+  CommsTick = 20  
+  
+  PREFIX = NAV
+  START_POS = $(START_POS), 180, 0                                 
+  
+  START_X = 0
+  START_Y = 0
+  START_HEADING = 0
+  START_SPEED = 0
+  START_DEPTH = 100
+  
+  START_DRIFT_X = 0.0
+  START_DRIFT_Y = 0.0
+  START_DRIFT_Z = 0
+  
+  MASS             = 31.0    // Folaga without payload
+  MAX_SPEED        = 1.0     // m/s
+  MAX_ROTATE_SPEED = 18.0    // degrees/sec
+  
+  // heading noise
+  HEADING_SIGMA       = 0.1
+  HEADING_MU          = 0.005
+  HEADING_SATURATION  = 1.0  // degrees/sec
+  
+  DRAG_MAP = 0.0:0.0, 0.1:0.26, 0.2:1.05, 0.3:2.37, 0.4:4.21, 0.5:6.58, 0.6:9.47, 0.7:12.89, 0.8:16.84, 0.9:21.31, 1.0:26.31  // newtons // from Folaga 2 knots = 90N
+  
+  DEFAULT_WATER_DEPTH = 0   // means we do not know anything about the water depth
+
+  SIM_PAUSE            = false // or {true}
+}

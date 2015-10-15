@@ -1,0 +1,12 @@
+//---------------------------------------------------------
+// pShoreLogger Config Block  (Created from Plugin)
+
+ProcessConfig = pShoreLogger
+{
+  AppTick    = 2
+  CommsTick  = 2
+
+  LOG_SHORE   		= true
+  LOG_TIME_DELTA        = 5.0
+}
+

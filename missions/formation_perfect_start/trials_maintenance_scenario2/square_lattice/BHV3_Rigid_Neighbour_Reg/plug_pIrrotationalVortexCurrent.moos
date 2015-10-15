@@ -1,0 +1,8 @@
+//--------------------------------------------------------
+// pIrrotationalVortexCurrent Configuration Block (Created from Plugin)
+
+ProcessConfig = pIrrotationalVortexCurrent
+{
+  AppTick     = 2
+  CommsTick   = 2
+}

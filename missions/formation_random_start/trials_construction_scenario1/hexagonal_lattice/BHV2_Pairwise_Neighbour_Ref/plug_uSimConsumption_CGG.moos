@@ -1,0 +1,15 @@
+ProcessConfig = uSimConsumption_CGG
+{
+  AppTick   = 4
+  CommsTick = 4
+  
+  EFFICIENCY_PROP       = 0.58
+  EFFICIENCY_SHAFT      = 0.7
+  EFFICIENCY_GEAR       = 0.9
+  EFFICIENCY_MOTOR      = 0.8
+  POWER_NOMINAL         = 1.5                       // W
+  CONSUMPTION_PER_PING  = 2.4                       // W.s .. 24W during 100ms
+  POWER_SPEED           = power=90.0,speed=1.0      // newtons,m/s .. to use with uSimMarine
+  ENERGY_PACK           = 520.0                     // WH
+  DECAYING_SPEED_RATIO  = true			    // true|false
+}
