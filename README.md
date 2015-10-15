@@ -130,7 +130,8 @@ Install NLOpt from source: ISSUES!!!
     wget "http://ab-initio.mit.edu/nlopt/nlopt-2.4.2.tar.gz"
     tar -xvzf nlopt-2.4.2.tar.gz
     cd nlopt-2.4.2.tar.gz
-    ./configure
+    ./configure --enable-shared
+    make
     sudo make install
 
   
