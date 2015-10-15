@@ -125,7 +125,7 @@ Install Armadillo from source:
 
 ###NLOpt  
 
-Install NLOpt from source: ISSUES!!!
+Install NLOpt from source:
 
     wget "http://ab-initio.mit.edu/nlopt/nlopt-2.4.2.tar.gz"
     tar -xvzf nlopt-2.4.2.tar.gz
