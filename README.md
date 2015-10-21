@@ -94,7 +94,7 @@ Issues when building goby on PABLO:
 
     building goby with MOOS:  
     cd goby/build
-    sudo cmake .. -DMOOS_DIR=/home/student/moos-ivp/MOOS/MOOSCore  -Dbuild_common=ON -Dbuild_util=ON -Dbuild_acomms=ON -Dbuild_moos=ON -Dbuild_pb=ON -Denable_zeromq=ON
+    sudo cmake .. -DMOOS_DIR=/home/student/moos-ivp/MOOS/MOOSCore -Dbuild_common=ON -Dbuild_util=ON -Dbuild_acomms=ON -Dbuild_moos=ON -Dbuild_pb=ON -Denable_zeromq=ON
     sudo make install  
     
     possible dependencies:
