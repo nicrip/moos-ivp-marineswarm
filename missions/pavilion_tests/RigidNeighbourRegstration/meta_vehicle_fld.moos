@@ -1,0 +1,63 @@
+//*******************************************************
+// Vehicle Configuration File
+
+ServerHost = localhost
+ServerPort = $(VPORT)
+
+// Community name IS the vehicle name
+Community  = $(VNAME)
+
+#include plug_origin_warp.moos
+  
+//------------------------------------------------------------
+Processconfig = ANTLER
+{
+  MSBetweenLaunches = 100
+   
+  Run = MOOSDB             @ NewConsole = false
+  Run = pMarinePID         @ NewConsole = false
+  //***COMMENT OUT iM200 when simulating, COMMENT OUT uSimMarine when emulating/deploying***//
+  //Run = iM200              @ NewConsole = false
+  Run = uSimMarine              @ NewConsole = false
+  Run = pHelmIvP		@ NewConsole = false
+  Run = pNodeReporter      	@ NewConsole = false
+  Run = uProcessWatch      	@ NewConsole = false
+  Run = pShare             	@ NewConsole = false
+  Run = pHostInfo          	@ NewConsole = false
+  Run = uFldNodeBroker     	@ NewConsole = false
+  Run = pAcommsHandler_CGG      @ NewConsole = false ~pAcommsHandler_CGG 
+  //Run = pTrailViewer		@ NewConsole = false
+  //Run = pNodeLogger		@ NewConsole = false
+  //Run = pBasicContactMgr   @ NewConsole = false
+}
+
+#include plug_iM200.moos
+#include plug_pMarinePID.moos
+#include plug_uProcessWatch_fld.moos
+#include plug_pHelmIvP.moos
+#include plug_pNodeReporter.moos
+#include plug_pShare.moos
+#include plug_pHostInfo.moos
+#include plug_uFldNodeBroker.moos
+#include plug_pAcommsHandler.moos
+#include plug_pNodeLogger.moos
+#include plug_uSimMarine.moos
+#include plug_pBasicContactMgr.moos
+
+//--------------------------------------------------------------
+// pTrailViewer configuration block
+ 
+ProcessConfig = pTrailViewer
+{
+  AppTick   = 1
+  CommsTick = 1
+  DISTANCE = 10.0
+}
+
+ProcessConfig = uXMS                                            
+{                                                               
+  AppTick   = 4                                                 
+  CommsTick = 4                                                 
+                                                                
+  var    = NAV_X, NAV_Y, NAV_SPEED, NAV_HEADING 
+}

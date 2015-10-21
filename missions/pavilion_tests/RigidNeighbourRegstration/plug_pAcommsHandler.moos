@@ -5,7 +5,7 @@ ProcessConfig = pAcommsHandler_CGG
         log: false
         verbosity: QUIET show_gui: false
     }
-    load_shared_library: "../../../../../lib/libmoossafir_protobuf.so"
+    load_shared_library: "../../../lib/libmoossafir_protobuf.so"
     translator_entry {
         protobuf_name: "moossafir.Status"
         trigger { type: TRIGGER_TIME
@@ -92,21 +92,21 @@ ProcessConfig = pAcommsHandler_CGG
     }
     mac_cfg {
         type: MAC_FIXED_DECENTRALIZED
-        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 30 rate: 2 } // 0
-        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 30 rate: 0 } // 1
-        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 30 rate: 0 } // 2
-        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 30 rate: 0 } // 3
-        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 30 rate: 0 } // 4
-        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 30 rate: 1 } // 5
-        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 30 rate: 0 } // 6
-        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 30 rate: 0 } // 7
-        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 30 rate: 0 } // 8
-        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 30 rate: 0 } // 9
-        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 30 rate: 1 } // 10
-        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 30 rate: 0 } // 11
-        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 30 rate: 0 } // 12
-        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 30 rate: 0 } // 13 
-        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 30 rate: 0 } // 14
+        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 10 rate: 2 } // 0
+        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 10 rate: 0 } // 1
+        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 10 rate: 0 } // 2
+        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 10 rate: 0 } // 3
+        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 10 rate: 0 } // 4
+        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 10 rate: 1 } // 5
+        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 10 rate: 0 } // 6
+        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 10 rate: 0 } // 7
+        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 10 rate: 0 } // 8
+        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 10 rate: 0 } // 9
+        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 10 rate: 1 } // 10
+        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 10 rate: 0 } // 11
+        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 10 rate: 0 } // 12
+        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 10 rate: 0 } // 13 
+        slot { src: $(MODEM_ID)  type: DATA  slot_seconds: 10 rate: 0 } // 14
     }
     dccl_cfg { id_codec: "moossafir.id" }
     driver_cfg 
