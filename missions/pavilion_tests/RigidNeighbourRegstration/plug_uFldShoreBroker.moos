@@ -1,0 +1,38 @@
+ProcessConfig = uFldShoreBroker
+{
+  AppTick   = 1
+  CommsTick = 1
+
+  // Note: [QBRIDGE = FOO]  is shorthand for                    
+  //       [BRIDGE = src=FOO_$V,  alias=FOO] and                
+  //       [BRIDGE = src=FOO_ALL, alias=FOO]
+
+  qbridge  = DEPLOY, RETURN, SURVEY, NODE_REPORT, NODE_MESSAGE
+  qbridge  = MOOS_MANUAL_OVERIDE, APPCAST_REQ
+  QBRIDGE = STATION_KEEP
+
+  QBRIDGE = MOOS_MANUAL_OVERIDE
+  QBRIDGE = AVOID
+  
+  bridge  = src=PING_REPORT_FOR_$V, alias=PING_REPORT
+  bridge  = src=DRIFT_X_FOR_$V, alias=DRIFT_X
+  bridge  = src=DRIFT_Y_FOR_$V, alias=DRIFT_Y
+  bridge  = src=DRIFT_Z_FOR_$V, alias=DRIFT_Z
+  bridge  = src=RELAYED_USM_RESET_$V, alias=USM_RESET
+  bridge  = src=RELAYED_DEPLOY_$V, alias=DEPLOY
+  bridge  = src=RELAYED_SHOT_ORDER_$V, alias=SHOT_ORDER
+  bridge  = src=NORTH
+  bridge  = src=EAST
+  bridge  = src=WEST
+  bridge  = src=SOUTH
+  bridge  = src=APPCAST_REQ
+
+  bridge  = src=RNR_UPDATES
+  bridge  = src=WPT_UPDATES_$V, alias=WPT_UPDATES
+
+  BRIDGE  = src=FORMATION_ALL, alias=FORMATION
+
+  BRIDGE  = src=RETURN_ALL, alias=RETURN
+  BRIDGE  = src=RETURN_$V,  alias=RETURN
+}
+

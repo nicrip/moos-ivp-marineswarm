@@ -31,7 +31,8 @@ MACRO(ADD_BHV BHV_NAME)
     ManageAcousticPing
     AcousticPingPlanner
     IncrementalConvexHull
-    openblas
+    #openblas
+    blas
     ${SYSTEM_LIBS} )
 ENDMACRO(ADD_BHV)
 
@@ -56,5 +57,6 @@ TARGET_LINK_LIBRARIES(BHV_AssignmentRegistration
    ManageAcousticPing
    AcousticPingPlanner
    IncrementalConvexHull
-   openblas
+   #openblas
+   blas
    ${SYSTEM_LIBS} )

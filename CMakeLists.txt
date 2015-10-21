@@ -34,8 +34,8 @@ set(MOOS_LIBRARIES MOOS)
 # FINDING Octave HEADERS AND LIBRARIES...
 #=============================================================================
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules/")
-find_package(Octave 3.8 REQUIRED)
-include_directories(${Octave_INCLUDE_DIRS})
+#find_package(Octave 3.8 REQUIRED)
+#include_directories(${Octave_INCLUDE_DIRS})
 
 #=============================================================================
 # FINDING Octave HEADERS AND LIBRARIES...
@@ -49,6 +49,7 @@ include_directories(${Boost_INCLUDE_DIRS})
 find_package(ProtobufLocal REQUIRED)
 include_directories(${PROTOBUF_INCLUDE_DIRS})
 
+set(GOBY_ROOT_DIR "/usr/local/lib")
 find_package(Goby REQUIRED)
 include_directories(${GOBY_INCLUDE_DIRS})
 protobuf_include_dirs(${GOBY_INCLUDE_DIRS})

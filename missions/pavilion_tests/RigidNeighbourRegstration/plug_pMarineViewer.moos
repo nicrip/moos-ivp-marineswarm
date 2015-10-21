@@ -1,0 +1,73 @@
+//------------------------------------------
+// pMarineViewer config block
+
+ProcessConfig = pMarineViewer
+{
+  AppTick    = 4
+  CommsTick  = 4
+
+  //TIFF_FILE            = forrest19.tif
+  TIFF_FILE            = AerialMIT.tif
+  set_pan_x            = -30
+  set_pan_y            = 0
+  zoom                 = 1.8
+  vehicles_shape_scale = 1.5
+  vehicles_name_mode   = names+shortmode
+
+  polygon_viewable_all    = true
+  polygon_viewable_labels = false
+  seglist_viewable_all    = true
+  seglist_viewable_labels = false
+  point_viewable_all    = false
+  point_viewable_labels = false
+
+  appcast_viewable     = true
+  appcast_color_scheme = indigo
+
+  comms_pulse_viewable_all = true
+  vehicles_name_mode = names
+
+  stale_report_thresh = 2
+  stale_remove_thresh = 20000
+
+  SCOPE = PHI_HOST_INFO
+
+  left_context[DRIFT_E] = WPT_UPDATES_EVAN = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_F] = WPT_UPDATES_FELIX = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_G] = WPT_UPDATES_GUS = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_H] = WPT_UPDATES_HOTEL = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_I] = WPT_UPDATES_INDIA = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_J] = WPT_UPDATES_JULIET = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_K] = WPT_UPDATES_KILO = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_L] = WPT_UPDATES_LIMA = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_M] = WPT_UPDATES_MIKE = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_N] = WPT_UPDATES_NOVEMBER = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_O] = WPT_UPDATES_OSCAR = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_P] = WPT_UPDATES_PAPA = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_Q] = WPT_UPDATES_QUEBEC = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_R] = WPT_UPDATES_ROMEO = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_S] = WPT_UPDATES_SIERRA = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_T] = WPT_UPDATES_TANGO = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_U] = WPT_UPDATES_UNIFORM = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_V] = WPT_UPDATES_VICTOR = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_W] = WPT_UPDATES_WHISKEY = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_X] = WPT_UPDATES_XRAY = point_x=$(XPOS) # point_y=$(YPOS)
+
+  action  = menu_key=DEPLOY # DEPLOY_ALL=true # SURVEY_ALL=true # MOOS_MANUAL_OVERIDE_ALL=false # STATION_KEEP_ALL=false
+  action+ = menu_key=DEPLOY # RETURN_ALL=false
+  action  = menu_key=FORMATION_ON # DEPLOY_ALL=true
+  action+ = menu_key=FORMATION_ON # FORMATION_ALL=true
+  action  = menu_key=FORMATION_OFF # DEPLOY_ALL=true
+  action+ = menu_key=FORMATION_OFF # FORMATION_ALL=false
+
+  BUTTON_ONE   = DEPLOY  # DEPLOY_ALL=true
+  BUTTON_ONE   = SURVEY_ALL=true
+  BUTTON_ONE   = MOOS_MANUAL_OVERIDE_ALL=false  
+  BUTTON_ONE   = STATION_KEEP_ALL=false
+  BUTTON_ONE   = RETURN_ALL=false
+  BUTTON_TWO   = RETURN  # RETURN_ALL=true
+  BUTTON_TWO = DEPLOY_ALL=true # STATION_KEEP_ALL=false #SURVEY=false
+  BUTTON_THREE = ALL_STOP  # DEPLOY_ALL=false 
+  BUTTON_FOUR  = STATION_KEEP # STATION_KEEP_ALL=true
+  BUTTON_FOUR  = DEPLOY_ALL=true # RETURN_ALL=false # SURVEY=false
+}

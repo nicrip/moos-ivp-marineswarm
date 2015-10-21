@@ -22,6 +22,7 @@ TARGET_LINK_LIBRARIES(pFormationQualityMetric
    m
    pthread
    armadillo
-   openblas
+   #openblas
+   blas
    contacts)
 

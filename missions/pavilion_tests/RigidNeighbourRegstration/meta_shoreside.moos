@@ -1,0 +1,42 @@
+//*******************************************************
+// ShoreSide Configuration File
+
+ServerHost = localhost
+ServerPort = $(SPORT)
+Community  = $(SNAME)
+
+TERM_REPORTING = false
+
+#include plug_origin_warp.moos
+  
+//--------------------------------------------------------
+Processconfig = ANTLER
+{
+  MSBetweenLaunches = 100
+
+  Run = MOOSDB          	@ NewConsole = false
+  Run = pMarineViewer   	@ NewConsole = false
+  Run = pShare          	@ NewConsole = false
+  Run = pHostInfo       	@ NewConsole = false
+  Run = uFldShoreBroker 	@ NewConsole = false
+  Run = uFldPingManager_CGG	@ NewConsole = false
+  //Run = pFormationQualityMetric @ NewConsole = true
+  //Run = pShoreLogger		@ NewConsole = false
+}
+
+#include plug_pMarineViewer.moos
+#include plug_pShare.moos
+#include plug_pHostInfo.moos
+#include plug_uFldShoreBroker.moos
+#include plug_uFldPingManager_CGG.moos
+//#include plug_pFormationQualityMetric.moos //FIX FORMATION PLAN!!!
+#include plug_pShoreLogger.moos
+
+ProcessConfig = pHostInfo
+{
+  AppTick 	= 1
+  CommsTick 	= 1
+  Temp_File_Dir = ./
+
+  DEFAULT_HOSTIP_FORCE = $(HOSTIP_FORCE)
+}

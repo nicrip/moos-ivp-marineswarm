@@ -5,7 +5,7 @@ ProcessConfig = pAcommsHandler_CGG
         log: false
         verbosity: QUIET show_gui: false
     }
-    load_shared_library: "../../../../lib/libmoossafir_protobuf.so"
+    load_shared_library: "../../../../../lib/libmoossafir_protobuf.so"
     translator_entry {
         protobuf_name: "moossafir.Status"
         trigger { type: TRIGGER_TIME
