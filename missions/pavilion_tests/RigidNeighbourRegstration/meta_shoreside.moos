@@ -22,6 +22,7 @@ Processconfig = ANTLER
   Run = uFldPingManager_CGG	@ NewConsole = false
   //Run = pFormationQualityMetric @ NewConsole = true
   //Run = pShoreLogger		@ NewConsole = false
+  Run = uFldNodeComms		@ NewConsole = false
 }
 
 #include plug_pMarineViewer.moos
@@ -39,4 +40,20 @@ ProcessConfig = pHostInfo
   Temp_File_Dir = ./
 
   DEFAULT_HOSTIP_FORCE = $(HOSTIP_FORCE)
+}
+
+ProcessConfig = uFldNodeComms
+{
+  AppTick       = 2
+  CommsTick     = 2
+
+  comms_range      = 50
+  critical_range   = 25
+
+  min_msg_interval = 15
+  max_msg_length   = 1000
+
+  groups           = true
+
+  view_node_rpt_pulses = false
 }

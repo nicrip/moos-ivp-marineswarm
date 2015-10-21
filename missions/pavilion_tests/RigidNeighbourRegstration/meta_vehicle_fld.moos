@@ -28,7 +28,7 @@ Processconfig = ANTLER
   Run = pAcommsHandler_CGG      @ NewConsole = false ~pAcommsHandler_CGG 
   //Run = pTrailViewer		@ NewConsole = false
   //Run = pNodeLogger		@ NewConsole = false
-  //Run = pBasicContactMgr   @ NewConsole = false
+  Run = pBasicContactMgr   @ NewConsole = false
 }
 
 #include plug_iM200.moos

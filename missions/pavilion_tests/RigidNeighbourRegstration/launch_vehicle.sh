@@ -248,8 +248,8 @@ for ARGI; do
         MOOS_FILE="targ_juliet.moos"
         BHV_FILE="targ_juliet.bhv"
 	MODEM_ID=10
-	POINT_X=80
-	POINT_Y=-120
+	POINT_X=90
+	POINT_Y=-130
         printf "juliet vehicle selected.\n"
     fi
     if [ "${ARGI}" = "--india" -o "${ARGI}" = "-i" ] ; then
@@ -264,7 +264,7 @@ for ARGI; do
         BHV_FILE="targ_india.bhv"
 	MODEM_ID=9
 	POINT_X=60
-	POINT_Y=-120
+	POINT_Y=-130
         printf "india vehicle selected.\n"
     fi
     if [ "${ARGI}" = "--hotel" -o "${ARGI}" = "-h" ] ; then
@@ -278,8 +278,8 @@ for ARGI; do
         MOOS_FILE="targ_hotel.moos"
         BHV_FILE="targ_hotel.bhv"
 	MODEM_ID=8
-	POINT_X=40
-	POINT_Y=-120
+	POINT_X=30
+	POINT_Y=-130
         printf "hotel vehicle selected.\n"
     fi
     if [ "${ARGI}" = "--gus" -o "${ARGI}" = "-g" ] ; then
@@ -293,7 +293,7 @@ for ARGI; do
         MOOS_FILE="targ_gus.moos"
         BHV_FILE="targ_gus.bhv"
 	MODEM_ID=7
-	POINT_X=80
+	POINT_X=90
 	POINT_Y=-100
         printf "GUS vehicle selected.\n"
     fi
@@ -323,7 +323,7 @@ for ARGI; do
         MOOS_FILE="targ_evan.moos"
         BHV_FILE="targ_evan.bhv"
 	MODEM_ID=5
-	POINT_X=40
+	POINT_X=30
 	POINT_Y=-100
         printf "EVAN vehicle selected.\n"
     fi
