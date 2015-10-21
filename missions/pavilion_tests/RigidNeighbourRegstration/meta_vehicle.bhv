@@ -78,7 +78,7 @@ Behavior = BHV_RigidNeighbourRegistration
     targets_filter_size = 1                             // int
 
   // BHV_ManageAcousticPing parameters:
-    ping_filter_timeout = 10   	              		// s double
+    ping_filter_timeout = 20   	              		// s double
     contact_timeout = 30				// s double
     display_filtered_contact = false           		// true|false bool
     display_unfiltered_contact = false	  		// true|false bool
@@ -88,6 +88,9 @@ Behavior = BHV_RigidNeighbourRegistration
     node_offsets = name=evan,x=0,y=0
     node_offsets = name=felix,x=100,y=0
     node_offsets = name=gus,x=50,y=86.6
+    node_offsets = name=hotel,x=-50,y=-86.6
+    node_offsets = name=india,x=50,y=-86.6
+    node_offsets = name=juliet,x=150,y=-86.6
 
   // BHV_RigidNeighbourRegistration parameters:
     contact_rangeout = 200				// m double
