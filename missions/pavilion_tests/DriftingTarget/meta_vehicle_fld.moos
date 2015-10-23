@@ -17,8 +17,8 @@ Processconfig = ANTLER
   Run = MOOSDB             @ NewConsole = false
   Run = pMarinePID         @ NewConsole = false
   //***COMMENT OUT iM200 when simulating, COMMENT OUT uSimMarine when emulating/deploying***//
-  //Run = iM200              @ NewConsole = false
-  Run = uSimMarine              @ NewConsole = false
+  Run = iM200              @ NewConsole = false
+  //Run = uSimMarine              @ NewConsole = false
   Run = pHelmIvP		@ NewConsole = false
   Run = pNodeReporter      	@ NewConsole = false
   Run = uProcessWatch      	@ NewConsole = false

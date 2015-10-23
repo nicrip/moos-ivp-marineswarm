@@ -5,15 +5,17 @@
 #  Emulator running on different machine:           IP address of that machine (often 192.168.2.1)
 #  Actual evan vehicle:                             192.168.5.1
 #  Actual felix vehile:                             192.168.6.1
-M200_IP="localhost"
+#M200_IP="localhost"
 #M200_IP="192.168.254.1"
+M200_IP="192.168.X.1"
 
 # SHORE_IP
 #  Emulation, shoreside running on same machine as vehicle: localhost
 #  Emulation, shoreside running on a different machine:     IP address of that machine (often 192.168.2.1)
 #  Actual vehicle:                                          IP address of the shoreside computer
-SHORE_IP="localhost"
+#SHORE_IP="localhost"
 #SHORE_IP="192.168.254.1"
+SHORE_IP="192.168.1.X"
 
 WARP=1
 BAD_ARGS=""
