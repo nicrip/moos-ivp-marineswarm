@@ -31,6 +31,7 @@ ProcessConfig = uFldShoreBroker
   bridge  = src=WPT_UPDATES_$V, alias=WPT_UPDATES
 
   BRIDGE  = src=FORMATION_ALL, alias=FORMATION
+  BRIDGE  = src=FORMATION_$V, alias=FORMATION
 
   BRIDGE  = src=RETURN_ALL, alias=RETURN
   BRIDGE  = src=RETURN_$V,  alias=RETURN

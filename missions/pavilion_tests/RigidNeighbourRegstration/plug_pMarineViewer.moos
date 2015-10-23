@@ -33,25 +33,45 @@ ProcessConfig = pMarineViewer
   SCOPE = PHI_HOST_INFO
 
   left_context[DRIFT_E] = WPT_UPDATES_EVAN = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_E] = FORMATION_EVAN = false
   left_context[DRIFT_F] = WPT_UPDATES_FELIX = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_F] = FORMATION_FELIX = false
   left_context[DRIFT_G] = WPT_UPDATES_GUS = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_G] = FORMATION_GUS = false
   left_context[DRIFT_H] = WPT_UPDATES_HOTEL = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_H] = FORMATION_HOTEL = false
   left_context[DRIFT_I] = WPT_UPDATES_INDIA = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_I] = FORMATION_INDIA = false
   left_context[DRIFT_J] = WPT_UPDATES_JULIET = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_J] = FORMATION_JULIET = false
   left_context[DRIFT_K] = WPT_UPDATES_KILO = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_K] = FORMATION_KILO = false
   left_context[DRIFT_L] = WPT_UPDATES_LIMA = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_L] = FORMATION_LIMA = false
   left_context[DRIFT_M] = WPT_UPDATES_MIKE = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_M] = FORMATION_MIKE = false
   left_context[DRIFT_N] = WPT_UPDATES_NOVEMBER = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_N] = FORMATION_NOVEMBER = false
   left_context[DRIFT_O] = WPT_UPDATES_OSCAR = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_O] = FORMATION_OSCAR = false
   left_context[DRIFT_P] = WPT_UPDATES_PAPA = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_P] = FORMATION_PAPA = false
   left_context[DRIFT_Q] = WPT_UPDATES_QUEBEC = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_Q] = FORMATION_QUEBEC = false
   left_context[DRIFT_R] = WPT_UPDATES_ROMEO = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_R] = FORMATION_ROMEO = false
   left_context[DRIFT_S] = WPT_UPDATES_SIERRA = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_S] = FORMATION_SIERRA = false
   left_context[DRIFT_T] = WPT_UPDATES_TANGO = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_T] = FORMATION_TANGO = false
   left_context[DRIFT_U] = WPT_UPDATES_UNIFORM = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_U] = FORMATION_UNIFORM = false
   left_context[DRIFT_V] = WPT_UPDATES_VICTOR = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_V] = FORMATION_VICTOR = false
   left_context[DRIFT_W] = WPT_UPDATES_WHISKEY = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_W] = FORMATION_WHISKEY = false
   left_context[DRIFT_X] = WPT_UPDATES_XRAY = point_x=$(XPOS) # point_y=$(YPOS)
+  left_context[DRIFT_X] = FORMATION_XRAY = false
 
   action  = menu_key=DEPLOY # DEPLOY_ALL=true # SURVEY_ALL=true # MOOS_MANUAL_OVERIDE_ALL=false # STATION_KEEP_ALL=false
   action+ = menu_key=DEPLOY # RETURN_ALL=false
@@ -66,7 +86,7 @@ ProcessConfig = pMarineViewer
   BUTTON_ONE   = STATION_KEEP_ALL=false
   BUTTON_ONE   = RETURN_ALL=false
   BUTTON_TWO   = RETURN  # RETURN_ALL=true
-  BUTTON_TWO = DEPLOY_ALL=true # STATION_KEEP_ALL=false #SURVEY=false
+  BUTTON_TWO   = DEPLOY_ALL=true # STATION_KEEP_ALL=false #SURVEY=false
   BUTTON_THREE = ALL_STOP  # DEPLOY_ALL=false 
   BUTTON_FOUR  = STATION_KEEP # STATION_KEEP_ALL=true
   BUTTON_FOUR  = DEPLOY_ALL=true # RETURN_ALL=false # SURVEY=false
